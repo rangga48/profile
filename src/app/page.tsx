@@ -14,7 +14,7 @@ export default function Home() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Navbar</NavigationMenuTrigger>
           <NavigationMenuContent>
             <NavigationMenuLink>Link</NavigationMenuLink>
           </NavigationMenuContent>
