@@ -10,6 +10,10 @@ import {
   Twitter,
 } from "lucide-react";
 import Image from "next/image";
+import { CiShare1, CiTwitter } from "react-icons/ci";
+import { AiOutlineMail } from "react-icons/ai";
+import { FaFigma, FaRegCopy } from "react-icons/fa";
+import { FiGithub, FiPhone } from "react-icons/fi";
 
 export default function Profile() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -473,11 +477,296 @@ export default function Profile() {
                     ante ipsum primis in faucibus orci luctus et ultrices
                     posuere cubilia curae.
                   </div>
-                  <div className="w-full mt-5"></div>
+                  <div className="mt-5 flex flex-wrap aligns-center gap-2">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      React
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Next.js
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Typescript
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Nest.js
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      PostgreSQL
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Tailwindcss
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Figma
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Cypress
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Storybook
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Git
+                    </div>
+                  </div>
+                  <div className="mt-5">
+                    <CiShare1 size={32} />
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
+                <div className="col-span-10 lg:col-span-6">
+                  <div className="text-lg">Fiskil</div>
+                  <div className="text-md mt-5">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Maecenas nec urna ac tellus volutpat viverra. Vestibulum
+                    ante ipsum primis in faucibus orci luctus et ultrices
+                    posuere cubilia curae.
+                  </div>
+                  <div className="mt-5 flex flex-wrap aligns-center gap-2">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      React
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Next.js
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Typescript
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Nest.js
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      PostgreSQL
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Tailwindcss
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Figma
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Cypress
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Storybook
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Git
+                    </div>
+                  </div>
+                  <div className="mt-5">
+                    <CiShare1 size={32} />
+                  </div>
+                </div>
+                <div className="col-span-10 lg:col-span-6">
+                  <div className="flex justify-center">
+                    <Image
+                      src="/img/pic.png"
+                      alt=""
+                      height={500}
+                      width={500}
+                      quality={100}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
+                <div className="col-span-10 lg:col-span-6">
+                  <div className="flex justify-center">
+                    <Image
+                      src="/img/pic.png"
+                      alt=""
+                      height={500}
+                      width={500}
+                      quality={100}
+                    />
+                  </div>
+                </div>
+                <div className="col-span-10 lg:col-span-6">
+                  <div className="text-lg">Fiskil</div>
+                  <div className="text-md mt-5">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Maecenas nec urna ac tellus volutpat viverra. Vestibulum
+                    ante ipsum primis in faucibus orci luctus et ultrices
+                    posuere cubilia curae.
+                  </div>
+                  <div className="mt-5 flex flex-wrap aligns-center gap-2">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      React
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Next.js
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Typescript
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Nest.js
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      PostgreSQL
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Tailwindcss
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Figma
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Cypress
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Storybook
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                      Git
+                    </div>
+                  </div>
+                  <div className="mt-5">
+                    <CiShare1 size={32} />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="w-full bg-gray-50">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex justify-center">
+            <button
+              className="bg-gray-200 text-black py-1 px-6 rounded-xl"
+              disabled
+            >
+              Testimonials
+            </button>
+          </div>
+          <div className="w-full">
+            <div className="text-lg text-center mt-5 text-gray-400">
+              Nice things people have said about me:
+            </div>
+          </div>
+          <div className="container mx-auto mt-10">
+            <div className="grid grid-cols-12 gap-16">
+              <div className="col-span-4 bg-white shadow-lg rounded-lg p-10">
+                <div className="flex justify-center">
+                  <Image
+                    src="/icon/icon-avatar.png"
+                    alt="Upwork Logo"
+                    width={60}
+                    height={60}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="text-lg mt-5 text-gray-400">
+                  “Job well done! I am really impressed. He is very very good at
+                  what he does:) I would recommend Sagar and will rehire in the
+                  future for Frontend development.”
+                </div>
+                <div className="text-2xl text-center font-semibold mt-8">
+                  John Doe
+                </div>
+                <div className="text-lg text-center text-gray-400">
+                  Founder - xyz.com
+                </div>
+              </div>
+              <div className="col-span-4 bg-white shadow-lg rounded-lg p-10">
+                <div className="flex justify-center">
+                  <Image
+                    src="/icon/icon-avatar.png"
+                    alt="Upwork Logo"
+                    width={60}
+                    height={60}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="text-lg mt-5 text-gray-400">
+                  “Great guy, highly recommended for any COMPLEX front-end
+                  development job! His skills are top-notch and he will be an
+                  amazing addition to any team.”
+                </div>
+                <div className="text-2xl text-center font-semibold mt-8">
+                  John Doe
+                </div>
+                <div className="text-lg text-center text-gray-400">
+                  Founder - xyz.com
+                </div>
+              </div>
+              <div className="col-span-4 bg-white shadow-lg rounded-lg p-10">
+                <div className="flex justify-center">
+                  <Image
+                    src="/icon/icon-avatar.png"
+                    alt="Upwork Logo"
+                    width={60}
+                    height={60}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="text-lg mt-5 text-gray-400">
+                  “Sagar was extremely easy and pleasant to work with and he
+                  truly cares about the project being a success. Sagar has a
+                  high level of knowledge and was able to work on my MERN stack
+                  application without any issues.”
+                </div>
+                <div className="text-2xl text-center font-semibold mt-8">
+                  John Doe
+                </div>
+                <div className="text-lg text-center text-gray-400">
+                  Founder - xyz.com
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full bg-gray-50 mb-20">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex justify-center">
+            <button
+              className="bg-gray-200 text-black py-1 px-6 rounded-xl"
+              disabled
+            >
+              Get In Touch
+            </button>
+          </div>
+          <div className="w-full">
+            <div className="text-lg text-center mt-5 text-gray-400">
+              What’s next? Feel free to reach out to me if youre looking for
+              <br /> a developer, have a query, or simply want to connect.
+            </div>
+          </div>
+          <div className="w-full mt-10">
+            <div className="flex justify-center items-center gap-5">
+              <AiOutlineMail size={24} className="text-gray-400" />
+              <div className="text-3xl font-bold">ranggaputra681@gmail.com</div>
+              <FaRegCopy size={24} className="text-gray-400" />
+            </div>
+          </div>
+          <div className="w-full mt-10">
+            <div className="flex justify-center items-center gap-5">
+              <FiPhone size={24} className="text-gray-400" />
+              <div className="text-3xl font-bold">+62 813 8358 5869</div>
+              <FaRegCopy size={24} className="text-gray-400" />
+            </div>
+          </div>
+          <div className="w-full mt-10">
+            <div className="text-lg text-center text-gray-400">
+              You may also find me on these platforms!
+            </div>
+          </div>
+          <div className="w-full mt-3">
+            <div className="flex justify-center items-center gap-3">
+              <FiGithub size={20} />
+              <CiTwitter size={26} />
+              <FaFigma size={20} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full bg-gray-300 py-5">
+        <div className="text-lg text-center text-gray-50">
+          © 2025 | Designed and coded with ❤️ by Miracle
         </div>
       </div>
     </div>
