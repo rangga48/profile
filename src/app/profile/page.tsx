@@ -720,7 +720,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-gray-50 mb-20">
+      <div className="w-full bg-gray-50 pb-10">
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-center">
             <button
@@ -764,8 +764,8 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-gray-300 py-5">
-        <div className="text-lg text-center text-gray-50">
+      <div className="w-full bg-gray-50 py-5">
+        <div className="text-lg text-center text-gray-400">
           © 2025 | Designed and coded with ❤️ by Miracle
         </div>
       </div>
