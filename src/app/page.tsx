@@ -720,7 +720,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-gray-50 mb-20">
+      <div className="w-full bg-gray-50 pb-10">
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-center">
             <button
