@@ -349,7 +349,7 @@ export default function Home() {
           <div className="container mx-auto mt-10">
             <div className="grid grid-cols-12">
               <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden p-10">
-                <div className="flex justify-between items-start">
+                <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
                     src="/icon/upwork.png"
                     alt="Upwork Logo"
@@ -357,7 +357,7 @@ export default function Home() {
                     height={100}
                     className="object-contain"
                   />
-                  <div className="ml-4 flex-grow max-w-xl">
+                  <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
                     <h3 className="text-xl font-bold">
                       Sr. Frontend Developer
                     </h3>
@@ -377,13 +377,13 @@ export default function Home() {
                       </li>
                     </ul>
                   </div>
-                  <div className="text-sm text-gray-400 text-right">
+                  <div className="text-sm text-gray-400 md:text-right mt-4 md:mt-0">
                     Nov 2021 - Present
                   </div>
                 </div>
               </div>
               <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
-                <div className="flex justify-between items-start">
+                <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
                     src="/icon/upwork.png"
                     alt="Upwork Logo"
@@ -391,7 +391,8 @@ export default function Home() {
                     height={100}
                     className="object-contain"
                   />
-                  <div className="ml-4 flex-grow max-w-xl">
+
+                  <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
                     <h3 className="text-xl font-bold">Team Lead</h3>
                     <ul className="list-disc list-inside text-gray-400 mt-5">
                       <li className="text-base font-medium">
@@ -408,13 +409,14 @@ export default function Home() {
                       </li>
                     </ul>
                   </div>
-                  <div className="text-sm text-gray-400 text-right">
+
+                  <div className="text-sm text-gray-400 md:text-right mt-4 md:mt-0">
                     Jul 2017 - Oct 2021
                   </div>
                 </div>
               </div>
               <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
-                <div className="flex justify-between items-start">
+                <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
                     src="/icon/upwork.png"
                     alt="Upwork Logo"
@@ -422,7 +424,7 @@ export default function Home() {
                     height={100}
                     className="object-contain"
                   />
-                  <div className="ml-4 flex-grow max-w-xl">
+                  <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
                     <h3 className="text-xl font-bold">Full Stack Developer</h3>
                     <ul className="list-disc list-inside text-gray-400 mt-5">
                       <li className="text-base font-medium">
@@ -431,7 +433,7 @@ export default function Home() {
                       </li>
                     </ul>
                   </div>
-                  <div className="text-sm text-gray-400 text-right">
+                  <div className="text-sm text-gray-400 md:text-right mt-4 md:mt-0">
                     Dec 2015 - May 2017
                   </div>
                 </div>
@@ -458,7 +460,7 @@ export default function Home() {
           <div className="container mx-auto mt-10">
             <div className="grid grid-cols-12">
               <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10">
-                <div className="col-span-10 lg:col-span-6">
+                <div className="col-span-12 lg:col-span-6">
                   <div className="flex justify-center">
                     <Image
                       src="/img/pic.png"
@@ -469,7 +471,7 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="col-span-10 lg:col-span-6">
+                <div className="col-span-12 lg:col-span-6">
                   <div className="text-lg">Fiskil</div>
                   <div className="text-md mt-5">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -515,7 +517,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
-                <div className="col-span-10 lg:col-span-6">
+                <div className="col-span-12 lg:col-span-6">
                   <div className="text-lg">Fiskil</div>
                   <div className="text-md mt-5">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -559,7 +561,7 @@ export default function Home() {
                     <CiShare1 size={32} />
                   </div>
                 </div>
-                <div className="col-span-10 lg:col-span-6">
+                <div className="col-span-12 lg:col-span-6">
                   <div className="flex justify-center">
                     <Image
                       src="/img/pic.png"
@@ -572,7 +574,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
-                <div className="col-span-10 lg:col-span-6">
+                <div className="col-span-12 lg:col-span-6">
                   <div className="flex justify-center">
                     <Image
                       src="/img/pic.png"
@@ -583,7 +585,7 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="col-span-10 lg:col-span-6">
+                <div className="col-span-12 lg:col-span-6">
                   <div className="text-lg">Fiskil</div>
                   <div className="text-md mt-5">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -648,8 +650,8 @@ export default function Home() {
             </div>
           </div>
           <div className="container mx-auto mt-10">
-            <div className="grid grid-cols-12 gap-16">
-              <div className="col-span-4 bg-white shadow-lg rounded-lg p-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-16">
+              <div className="bg-white shadow-lg rounded-lg p-10">
                 <div className="flex justify-center">
                   <Image
                     src="/icon/icon-avatar.png"
@@ -671,7 +673,8 @@ export default function Home() {
                   Founder - xyz.com
                 </div>
               </div>
-              <div className="col-span-4 bg-white shadow-lg rounded-lg p-10">
+
+              <div className="bg-white shadow-lg rounded-lg p-10">
                 <div className="flex justify-center">
                   <Image
                     src="/icon/icon-avatar.png"
@@ -693,7 +696,8 @@ export default function Home() {
                   Founder - xyz.com
                 </div>
               </div>
-              <div className="col-span-4 bg-white shadow-lg rounded-lg p-10">
+
+              <div className="bg-white shadow-lg rounded-lg p-10">
                 <div className="flex justify-center">
                   <Image
                     src="/icon/icon-avatar.png"
