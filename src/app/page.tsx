@@ -743,14 +743,14 @@ export default function Home() {
           <div className="w-full mt-10">
             <div className="flex justify-center items-center gap-5">
               <AiOutlineMail size={24} className="text-gray-400" />
-              <div className="text-3xl font-bold">ranggaputra681@gmail.com</div>
+              <div className="text-2xl font-bold">ranggaputra681@gmail.com</div>
               <FaRegCopy size={24} className="text-gray-400" />
             </div>
           </div>
           <div className="w-full mt-10">
             <div className="flex justify-center items-center gap-5">
               <FiPhone size={24} className="text-gray-400" />
-              <div className="text-3xl font-bold">+62 813 8358 5869</div>
+              <div className="text-2xl font-bold">+62 813 8358 5869</div>
               <FaRegCopy size={24} className="text-gray-400" />
             </div>
           </div>
