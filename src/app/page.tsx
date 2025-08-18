@@ -348,7 +348,7 @@ export default function Home() {
           </div>
           <div className="container mx-auto mt-10">
             <div className="grid grid-cols-12">
-              <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden p-10">
+              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10">
                 <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
                     src="/icon/upwork.png"
@@ -382,7 +382,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
+              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
                 <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
                     src="/icon/upwork.png"
@@ -415,7 +415,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
+              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
                 <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
                     src="/icon/upwork.png"
@@ -459,7 +459,7 @@ export default function Home() {
           </div>
           <div className="container mx-auto mt-10">
             <div className="grid grid-cols-12">
-              <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10">
+              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10">
                 <div className="col-span-12 lg:col-span-6">
                   <div className="flex justify-center">
                     <Image
@@ -516,8 +516,8 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
-                <div className="col-span-12 lg:col-span-6">
+              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
+                <div className="col-span-12 lg:col-span-6 order-2 lg:order-1">
                   <div className="text-lg">Fiskil</div>
                   <div className="text-md mt-5">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -561,7 +561,7 @@ export default function Home() {
                     <CiShare1 size={32} />
                   </div>
                 </div>
-                <div className="col-span-12 lg:col-span-6">
+                <div className="col-span-12 lg:col-span-6 order-1 lg:order-2">
                   <div className="flex justify-center">
                     <Image
                       src="/img/pic.png"
@@ -573,7 +573,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-10 col-start-2 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
+              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
                 <div className="col-span-12 lg:col-span-6">
                   <div className="flex justify-center">
                     <Image
