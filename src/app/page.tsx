@@ -105,7 +105,7 @@ export default function Home() {
             </div>
             <div className="col-span-12 lg:col-span-6 flex justify-center items-center p-5 order-1 lg:order-2">
               <div className="relative">
-                <div className="w-[260px] h-[250px] lg:w-60 lg:h-60 bg-gray-400 absolute lg:left-8 lg:top-8 top-2 left-[-10px]"></div>
+                <div className="w-[240px] h-[240px] lg:w-60 lg:h-60 bg-gray-400 absolute lg:left-8 lg:top-8 top-[1.4rem] left-[-25px]"></div>
                 <div className="w-60 h-60 relative">
                   <Image
                     className="object-cover w-full h-full"
