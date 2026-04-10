@@ -33,10 +33,10 @@ export default function Home() {
             <div className="text-lg font-bold">{"</>"}</div>
           </div>
           <div className="hidden lg:flex items-center gap-x-7">
-            <div className="text-lg">About</div>
-            <div className="text-lg">Work</div>
-            <div className="text-lg">Testimonials</div>
-            <div className="text-lg">Contact</div>
+            <div className="text-lg cursor-pointer">About</div>
+            <div className="text-lg cursor-pointer">Work</div>
+            {/* <div className="text-lg cursor-pointer">Testimonials</div> */}
+            <div className="text-lg cursor-pointer">Contact</div>
             <div className="text-lg">
               <Sun />
             </div>
@@ -61,9 +61,9 @@ export default function Home() {
               <a href="#work" className="text-lg">
                 Work
               </a>
-              <a href="#testimonials" className="text-lg">
+              {/* <a href="#testimonials" className="text-lg">
                 Testimonials
-              </a>
+              </a> */}
               <a href="#contact" className="text-lg">
                 Contact
               </a>
@@ -80,11 +80,16 @@ export default function Home() {
                 Hi, I`m Rangga 👋
               </div>
               <div className="text-lg mt-5 lg:mt-10 text-gray-400">
-                I`m a full stack developer (React.js & Node.js) with a focus on
-                creating (and occasionally designing) exceptional digital
-                experiences that are fast, accessible, visually appealing, and
-                responsive. Even though I have been creating web applications
-                for over 7 years, I still love it as if it was something new.
+                Frontend Developer with hands-on experience in building and
+                maintaining responsive web applications. Skilled in JavaScript
+                and TypeScript, with a strong focus on creating clean, scalable,
+                and user-friendly interfaces. <br />
+                <br />
+                Experienced in working with modern frontend frameworks,
+                integrating REST APIs, and collaborating with cross-functional
+                teams (UI/UX, Backend, QA). Proven ability to manage multiple
+                projects simultaneously while maintaining high code quality and
+                performance.
               </div>
               <div className="mt-10">
                 <div className="text-lg flex items-center gap-x-4">
@@ -153,49 +158,49 @@ export default function Home() {
                   Curious about me? Here you have it:
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  I`m a passionate, self-proclaimed designer who specializes in
-                  full stack development (React.js & Node.js). I am very
-                  enthusiastic about bringing the technical and visual aspects
-                  of digital products to life. User experience, pixel perfect
-                  design, and writing clear, readable, highly performant code
-                  matters to me.
+                  Hi, I'm Rangga Putra — a Frontend Developer based in Bandung,
+                  Indonesia, with a passion for building clean, responsive, and
+                  user-friendly web applications.
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  I began my journey as a web developer in 2015, and since then,
-                  I`ve continued to grow and evolve as a developer, taking on
-                  new challenges and learning the latest technologies along the
-                  way. Now, in my early thirties, 7 years after starting my web
-                  development journey, I`m building cutting-edge web
-                  applications using modern technologies such as Next.js,
-                  TypeScript, Nestjs, Tailwindcss, Supabase and much more.
+                  My journey in web development started back in 2022 when I
+                  interned at a government agency, and since then I haven't
+                  looked back. I've grown from debugging PHP apps to managing up
+                  to 9 active products simultaneously as a professional frontend
+                  developer — and I genuinely enjoy every bit of the challenge.
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  I am very much a progressive thinker and enjoy working on
-                  products end to end, from ideation all the way to development.
+                  I specialize in Angular and TypeScript, with solid experience
+                  in Laravel, Bootstrap, Tailwind CSS, and REST API integration.
+                  I care deeply about writing readable, performant code and
+                  delivering interfaces that feel great to use.
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  When I`m not in full-on developer mode, you can find me
-                  hovering around on twitter or on indie hacker, witnessing the
-                  journey of early startups or enjoying some free time. You can
-                  follow me on Twitter where I share tech-related bites and
-                  build in public, or you can follow me on GitHub.
+                  Currently, I'm a Frontend Developer at PT. Adhikari Invoasi
+                  Indonesia, where I work closely with UI/UX designers and
+                  backend teams to ship high-quality features across multiple
+                  products. Before that, I freelanced for 2+ years, completing
+                  over 30 web projects for clients across various industries.
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  Finally, some quick bits about me.
+                  A few quick things about me:
                 </div>
                 <div className="text-lg flex justify-between text-gray-400 mt-5">
                   <ul className="list-disc list-inside pl-2 text-gray-400">
-                    <li className="text-lg font-medium">
-                      B.E. in Computer Engineering
+                    <li className="text-sm font-medium">
+                      Bachelor's in Informatics Engineering — Politeknik Pos
+                      Indonesia
                     </li>
-                    <li className="text-lg font-medium">
-                      Full time freelancer
+                    <li className="text-sm font-medium">
+                      Open to freelance opportunities
                     </li>
                   </ul>
                   <ul className="list-disc list-inside pl-2 text-gray-400">
-                    <li className="text-lg font-medium">Avid Learner</li>
-                    <li className="text-lg font-medium">
-                      Aspiring indie hacker
+                    <li className="text-sm font-medium">
+                      Currently building with Angular, TypeScript & Laravel
+                    </li>
+                    <li className="text-sm font-medium">
+                      Based in Bandung, always happy to connect
                     </li>
                   </ul>
                 </div>
@@ -280,53 +285,105 @@ export default function Home() {
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
-                  src="/icon/programing.png"
+                  src="/icon/git.svg"
                   alt="Profile"
                   width={100}
                   height={100}
                   quality={100}
                 />
               </div>
-              <div className="text-lg mt-1">Node JS</div>
+              <div className="text-lg mt-1">Git</div>
             </li>
             <li className="text-center p-2">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
-                  src="/icon/express.png"
+                  src="/icon/laravel.png"
                   alt="Profile"
                   width={100}
                   height={100}
                   quality={100}
                 />
               </div>
-              <div className="text-lg mt-1">Express JS</div>
+              <div className="text-lg mt-1">Laravel</div>
             </li>
             <li className="text-center p-2">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
-                  src="/icon/nest.png"
+                  src="/icon/tailwind-css.svg"
                   alt="Profile"
                   width={100}
                   height={100}
                   quality={100}
                 />
               </div>
-              <div className="text-lg mt-1">Nest JS</div>
+              <div className="text-lg mt-1">Tailwind CSS</div>
             </li>
             <li className="text-center p-2">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
-                  src="/icon/socket.png"
+                  src="/icon/css.svg"
                   alt="Profile"
                   width={100}
                   height={100}
                   quality={100}
                 />
               </div>
-              <div className="text-lg mt-1">Socket io</div>
+              <div className="text-lg mt-1">CSS</div>
+            </li>
+            <li className="text-center p-2">
+              <div className="flex justify-center">
+                <Image
+                  className="object-cover w-2/5"
+                  src="/icon/angular.svg"
+                  alt="Profile"
+                  width={100}
+                  height={100}
+                  quality={100}
+                />
+              </div>
+              <div className="text-lg mt-1">Angular</div>
+            </li>
+            <li className="text-center p-2">
+              <div className="flex justify-center">
+                <Image
+                  className="object-cover w-2/5"
+                  src="/icon/bootstrap.svg"
+                  alt="Profile"
+                  width={100}
+                  height={100}
+                  quality={100}
+                />
+              </div>
+              <div className="text-lg mt-1">Bootstrap</div>
+            </li>
+            <li className="text-center p-2">
+              <div className="flex justify-center">
+                <Image
+                  className="object-cover w-2/5"
+                  src="/icon/html.svg"
+                  alt="Profile"
+                  width={100}
+                  height={100}
+                  quality={100}
+                />
+              </div>
+              <div className="text-lg mt-1">HTML</div>
+            </li>
+            <li className="text-center p-2">
+              <div className="flex justify-center">
+                <Image
+                  className="object-cover w-2/5"
+                  src="/icon/php.png"
+                  alt="Profile"
+                  width={100}
+                  height={100}
+                  quality={100}
+                />
+              </div>
+              <div className="text-lg mt-1">PHP</div>
             </li>
           </ul>
         </div>
@@ -634,7 +691,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-gray-50">
+      {/* <div className="w-full bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-center">
             <button
@@ -723,7 +780,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="w-full bg-gray-50 pb-10">
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-center">
@@ -737,7 +794,8 @@ export default function Home() {
           <div className="w-full">
             <div className="text-lg text-center mt-5 text-gray-400">
               What’s next? Feel free to reach out to me if youre looking for
-              <br /> a developer, have a query, or simply want to connect.
+              <br /> a Frontend Developer, have a query, or simply want to
+              connect.
             </div>
           </div>
           <div className="w-full mt-10">
