@@ -215,7 +215,7 @@ export default function Home() {
               </div>
               <div className="mt-10">
                 <div className="text-lg flex items-center gap-x-4">
-                  <MapPin /> Rangga Putra, Bandung
+                  <MapPin /> Bandung
                 </div>
                 <div className="text-lg flex items-center gap-x-4 ml-1.5 mt-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full mr-1.5"></div>
@@ -224,13 +224,28 @@ export default function Home() {
               </div>
               <div className="mt-10">
                 <div className="flex items-center gap-x-4">
-                  <a href="https://github.com/rangga48" target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white transition-colors">
+                  <a
+                    href="https://github.com/rangga48"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-black dark:hover:text-white transition-colors"
+                  >
                     <Github />
                   </a>
-                  <a href="https://www.instagram.com/mweh.48/" target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white transition-colors">
+                  <a
+                    href="https://www.instagram.com/mweh.48/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-black dark:hover:text-white transition-colors"
+                  >
                     <Instagram />
                   </a>
-                  <a href="https://www.linkedin.com/in/rangga-putra/" target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white transition-colors">
+                  <a
+                    href="https://www.linkedin.com/in/rangga-putra/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-black dark:hover:text-white transition-colors"
+                  >
                     <Linkedin />
                   </a>
                 </div>
@@ -1018,13 +1033,28 @@ export default function Home() {
           </div>
           <div className="w-full mt-3">
             <div className="flex justify-center items-center gap-3">
-              <a href="https://github.com/rangga48" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
+              <a
+                href="https://github.com/rangga48"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black transition-colors"
+              >
                 <Github size={20} />
               </a>
-              <a href="https://www.instagram.com/mweh.48/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
+              <a
+                href="https://www.instagram.com/mweh.48/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black transition-colors"
+              >
                 <Instagram size={20} />
               </a>
-              <a href="https://www.linkedin.com/in/rangga-putra/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
+              <a
+                href="https://www.linkedin.com/in/rangga-putra/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black transition-colors"
+              >
                 <Linkedin size={20} />
               </a>
             </div>
