@@ -4,12 +4,13 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
   AlignJustify,
-  Figma,
+  X,
+  Linkedin,
   Github,
   MapPin,
   Moon,
   Sun,
-  Twitter,
+  Instagram,
 } from "lucide-react";
 import { CiShare1, CiTwitter } from "react-icons/ci";
 import { AiOutlineMail } from "react-icons/ai";
@@ -70,15 +71,30 @@ export default function Home() {
   return (
     <div>
       <div className="w-full container mx-auto px-4">
-        <div className="flex justify-between p-5 relative">
-          <div className="flex items-center">
-            <div className="text-lg font-bold">{"</>"}</div>
+        <div className="flex justify-between items-center py-5 px-5 relative">
+          <div className="flex items-center z-50 relative">
+            <div className="text-xl tracking-tighter font-bold">{"</>"}</div>
           </div>
           <div className="hidden lg:flex items-center gap-x-7">
-            <a href="#about" className="text-lg cursor-pointer hover:text-gray-500 transition-colors">About</a>
-            <a href="#work" className="text-lg cursor-pointer hover:text-gray-500 transition-colors">Work</a>
+            <a
+              href="#about"
+              className="text-lg cursor-pointer hover:text-gray-500 transition-colors"
+            >
+              About
+            </a>
+            <a
+              href="#work"
+              className="text-lg cursor-pointer hover:text-gray-500 transition-colors"
+            >
+              Work
+            </a>
             {/* <a href="#testimonials" className="text-lg cursor-pointer hover:text-gray-500 transition-colors">Testimonials</a> */}
-            <a href="#contact" className="text-lg cursor-pointer hover:text-gray-500 transition-colors">Contact</a>
+            <a
+              href="#contact"
+              className="text-lg cursor-pointer hover:text-gray-500 transition-colors"
+            >
+              Contact
+            </a>
             <div className="text-lg">
               <button
                 onClick={toggleDark}
@@ -86,49 +102,97 @@ export default function Home() {
                 className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
               >
                 {isDark ? (
-                  <Moon size={22} className="text-gray-700 dark:text-yellow-300 transition-transform duration-300 rotate-0" />
+                  <Moon
+                    size={22}
+                    className="text-gray-700 dark:text-yellow-300 transition-transform duration-300 rotate-0"
+                  />
                 ) : (
-                  <Sun size={22} className="text-yellow-500 transition-transform duration-300 rotate-0" />
+                  <Sun
+                    size={22}
+                    className="text-yellow-500 transition-transform duration-300 rotate-0"
+                  />
                 )}
               </button>
             </div>
             <button
               onClick={handleDownloadCV}
-              className="w-full bg-black text-white p-3 rounded-xl hover:bg-gray-800 active:scale-95 transition-all duration-200"
+              className="w-full bg-black dark:bg-white text-white dark:text-black font-medium p-3 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 active:scale-95 transition-all duration-200"
             >
               Download CV
             </button>
           </div>
-          <div className="lg:hidden relative z-20">
+
+          <div className="flex lg:hidden items-center gap-x-3 relative z-50">
             <button
-              className="text-2xl"
+              onClick={toggleDark}
+              title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+            >
+              {isDark ? (
+                <Moon
+                  size={20}
+                  className="text-gray-700 dark:text-yellow-300 transition-transform duration-300 rotate-0"
+                />
+              ) : (
+                <Sun
+                  size={20}
+                  className="text-yellow-500 transition-transform duration-300 rotate-0"
+                />
+              )}
+            </button>
+            <button
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-200"
               onClick={() => setMenuOpen((prev) => !prev)}
             >
-              <AlignJustify />
+              {menuOpen ? <X size={20} /> : <AlignJustify size={20} />}
             </button>
           </div>
 
           {menuOpen && (
-            <div className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col items-start p-4 space-y-4 lg:hidden z-10">
-              <a href="#about" className="text-lg">
-                About
-              </a>
-              <a href="#work" className="text-lg">
-                Work
-              </a>
-              {/* <a href="#testimonials" className="text-lg">
-                Testimonials
-              </a> */}
-              <a href="#contact" className="text-lg">
-                Contact
-              </a>
-              <button
-                onClick={handleDownloadCV}
-                className="bg-black text-white px-4 py-2 rounded-xl w-full hover:bg-gray-800 active:scale-95 transition-all duration-200"
-              >
-                Download CV
-              </button>
-            </div>
+            <>
+              <div
+                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden transition-opacity"
+                onClick={() => setMenuOpen(false)}
+              />
+              <div className="absolute top-[calc(100%+0.5rem)] left-4 right-4 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-2xl rounded-3xl flex flex-col p-6 space-y-6 lg:hidden z-50 transition-transform origin-top">
+                <div className="flex flex-col space-y-5">
+                  <a
+                    href="#about"
+                    onClick={() => setMenuOpen(false)}
+                    className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400 transition-colors"
+                  >
+                    About
+                  </a>
+                  <div className="w-full h-px bg-gray-100 dark:bg-gray-800"></div>
+                  <a
+                    href="#work"
+                    onClick={() => setMenuOpen(false)}
+                    className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400 transition-colors"
+                  >
+                    Work
+                  </a>
+                  <div className="w-full h-px bg-gray-100 dark:bg-gray-800"></div>
+                  <a
+                    href="#contact"
+                    onClick={() => setMenuOpen(false)}
+                    className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400 transition-colors"
+                  >
+                    Contact
+                  </a>
+                </div>
+                <div className="pt-2">
+                  <button
+                    onClick={() => {
+                      handleDownloadCV();
+                      setMenuOpen(false);
+                    }}
+                    className="w-full bg-black dark:bg-white text-white dark:text-black font-semibold py-3.5 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 active:scale-95 transition-all duration-200"
+                  >
+                    Download CV
+                  </button>
+                </div>
+              </div>
+            </>
           )}
         </div>
         <div className="flex p-5">
@@ -160,9 +224,15 @@ export default function Home() {
               </div>
               <div className="mt-10">
                 <div className="flex items-center gap-x-4">
-                  <Github />
-                  <Twitter />
-                  <Figma />
+                  <a href="https://github.com/rangga48" target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white transition-colors">
+                    <Github />
+                  </a>
+                  <a href="https://www.instagram.com/mweh.48/" target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white transition-colors">
+                    <Instagram />
+                  </a>
+                  <a href="https://www.linkedin.com/in/rangga-putra/" target="_blank" rel="noopener noreferrer" className="hover:text-black dark:hover:text-white transition-colors">
+                    <Linkedin />
+                  </a>
                 </div>
               </div>
             </div>
@@ -243,7 +313,7 @@ export default function Home() {
                 <div className="text-lg text-gray-400 mt-5">
                   A few quick things about me:
                 </div>
-                <div className="text-lg flex justify-between text-gray-400 mt-5">
+                <div className="text-lg flex flex-col lg:flex-row lg:justify-between text-gray-400 mt-5 gap-y-2 lg:gap-y-0">
                   <ul className="list-disc list-inside pl-2 text-gray-400">
                     <li className="text-sm font-medium">
                       Bachelor's in Informatics Engineering — Politeknik Pos
@@ -873,11 +943,14 @@ export default function Home() {
           <div className="w-full mt-10">
             <div className="flex justify-center items-center gap-5">
               <a href="mailto:ranggaputra681@gmail.com" title="Send Email">
-                <AiOutlineMail size={24} className="text-gray-400 hover:text-black transition-colors" />
+                <AiOutlineMail
+                  size={24}
+                  className="text-gray-400 hover:text-black transition-colors"
+                />
               </a>
               <a
                 href="mailto:ranggaputra681@gmail.com"
-                className="text-2xl font-bold hover:underline transition-all"
+                className="text-lg lg:text-2xl font-bold hover:underline transition-all"
               >
                 ranggaputra681@gmail.com
               </a>
@@ -887,23 +960,36 @@ export default function Home() {
                 className="relative"
               >
                 {copiedEmail ? (
-                  <span className="text-sm text-green-500 font-medium">Copied!</span>
+                  <span className="text-sm text-green-500 font-medium">
+                    Copied!
+                  </span>
                 ) : (
-                  <FaRegCopy size={24} className="text-gray-400 hover:text-black transition-colors cursor-pointer" />
+                  <FaRegCopy
+                    size={24}
+                    className="text-gray-400 hover:text-black transition-colors cursor-pointer"
+                  />
                 )}
               </button>
             </div>
           </div>
           <div className="w-full mt-10">
             <div className="flex justify-center items-center gap-5">
-              <a href="https://wa.me/6281383585869" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
-                <FiPhone size={24} className="text-gray-400 hover:text-black transition-colors" />
+              <a
+                href="https://wa.me/6281383585869"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Chat on WhatsApp"
+              >
+                <FiPhone
+                  size={24}
+                  className="text-gray-400 hover:text-black transition-colors"
+                />
               </a>
               <a
                 href="https://wa.me/6281383585869"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-2xl font-bold hover:underline transition-all"
+                className="text-lg lg:text-2xl font-bold hover:underline transition-all"
               >
                 +62 813 8358 5869
               </a>
@@ -913,9 +999,14 @@ export default function Home() {
                 className="relative"
               >
                 {copiedPhone ? (
-                  <span className="text-sm text-green-500 font-medium">Copied!</span>
+                  <span className="text-sm text-green-500 font-medium">
+                    Copied!
+                  </span>
                 ) : (
-                  <FaRegCopy size={24} className="text-gray-400 hover:text-black transition-colors cursor-pointer" />
+                  <FaRegCopy
+                    size={24}
+                    className="text-gray-400 hover:text-black transition-colors cursor-pointer"
+                  />
                 )}
               </button>
             </div>
@@ -927,15 +1018,21 @@ export default function Home() {
           </div>
           <div className="w-full mt-3">
             <div className="flex justify-center items-center gap-3">
-              <FiGithub size={20} />
-              <CiTwitter size={26} />
-              <FaFigma size={20} />
+              <a href="https://github.com/rangga48" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
+                <Github size={20} />
+              </a>
+              <a href="https://www.instagram.com/mweh.48/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="https://www.linkedin.com/in/rangga-putra/" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
+                <Linkedin size={20} />
+              </a>
             </div>
           </div>
         </div>
       </div>
       <div className="w-full bg-gray-300 py-5">
-        <div className="text-lg text-center text-gray-50">
+        <div className="text-sm lg:text-lg text-center text-gray-50">
           © 2025 | Designed and coded with ❤️ by Rangga
         </div>
       </div>
