@@ -7,6 +7,7 @@ import {
   Figma,
   Github,
   MapPin,
+  Moon,
   Sun,
   Twitter,
 } from "lucide-react";
@@ -14,12 +15,53 @@ import { CiShare1, CiTwitter } from "react-icons/ci";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaFigma, FaRegCopy } from "react-icons/fa";
 import { FiGithub, FiPhone } from "react-icons/fi";
+import { CV_CONFIG } from "@/config/cv";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
+
+  const toggleDark = () => {
+    const next = !isDark;
+    setIsDark(next);
+    if (next) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
+  const handleDownloadCV = () => {
+    const link = document.createElement("a");
+    link.href = `/cv/${CV_CONFIG.file}`;
+    link.download = CV_CONFIG.downloadAs;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleCopy = (text: string, type: "email" | "phone") => {
+    navigator.clipboard.writeText(text);
+    if (type === "email") {
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2000);
+    } else {
+      setCopiedPhone(true);
+      setTimeout(() => setCopiedPhone(false), 2000);
+    }
+  };
   useEffect(() => {
     setIsClient(true);
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") {
+      setIsDark(true);
+      document.documentElement.classList.add("dark");
+    }
   }, []);
 
   if (!isClient) {
@@ -33,14 +75,27 @@ export default function Home() {
             <div className="text-lg font-bold">{"</>"}</div>
           </div>
           <div className="hidden lg:flex items-center gap-x-7">
-            <div className="text-lg cursor-pointer">About</div>
-            <div className="text-lg cursor-pointer">Work</div>
-            {/* <div className="text-lg cursor-pointer">Testimonials</div> */}
-            <div className="text-lg cursor-pointer">Contact</div>
+            <a href="#about" className="text-lg cursor-pointer hover:text-gray-500 transition-colors">About</a>
+            <a href="#work" className="text-lg cursor-pointer hover:text-gray-500 transition-colors">Work</a>
+            {/* <a href="#testimonials" className="text-lg cursor-pointer hover:text-gray-500 transition-colors">Testimonials</a> */}
+            <a href="#contact" className="text-lg cursor-pointer hover:text-gray-500 transition-colors">Contact</a>
             <div className="text-lg">
-              <Sun />
+              <button
+                onClick={toggleDark}
+                title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+              >
+                {isDark ? (
+                  <Moon size={22} className="text-gray-700 dark:text-yellow-300 transition-transform duration-300 rotate-0" />
+                ) : (
+                  <Sun size={22} className="text-yellow-500 transition-transform duration-300 rotate-0" />
+                )}
+              </button>
             </div>
-            <button className="w-full bg-black text-white p-3 rounded-xl">
+            <button
+              onClick={handleDownloadCV}
+              className="w-full bg-black text-white p-3 rounded-xl hover:bg-gray-800 active:scale-95 transition-all duration-200"
+            >
               Download CV
             </button>
           </div>
@@ -67,7 +122,10 @@ export default function Home() {
               <a href="#contact" className="text-lg">
                 Contact
               </a>
-              <button className="bg-black text-white px-4 py-2 rounded-xl w-full">
+              <button
+                onClick={handleDownloadCV}
+                className="bg-black text-white px-4 py-2 rounded-xl w-full hover:bg-gray-800 active:scale-95 transition-all duration-200"
+              >
                 Download CV
               </button>
             </div>
@@ -126,7 +184,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-gray-50">
+      <div id="about" className="w-full bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-center">
             <button
@@ -408,90 +466,116 @@ export default function Home() {
               <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10">
                 <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
-                    src="/icon/upwork.png"
+                    src="/icon/awh.png"
                     alt="Upwork Logo"
                     width={100}
                     height={100}
                     className="object-contain"
                   />
                   <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
+                    <h3 className="text-xl font-bold">Frontend Developer</h3>
+                    <ul className="list-disc list-inside text-gray-400 mt-5">
+                      <li className="text-base font-medium">
+                        Develop and maintain web applications using Angular and
+                        TypeScript .
+                      </li>
+                      <li className="text-base font-medium">
+                        Manage multiple projects simultaneously (up to 9 active
+                        products).
+                      </li>
+                      <li className="text-base font-medium">
+                        Implement new features based on business and user
+                        requirements .
+                      </li>
+                      <li className="text-base font-medium">
+                        Perform bug fixing and optimize application performance.
+                      </li>
+                      <li className="text-base font-medium">
+                        Integrate frontend applications with REST APIs.
+                      </li>
+                      <li className="text-base font-medium">
+                        Collaborate with UI/UX designers and backend developers
+                        to deliver high-quality features.
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="text-sm text-gray-400 md:text-right mt-4 md:mt-0">
+                    Jan 2024 - Present
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
+                <div className="flex flex-col md:flex-row justify-between items-start">
+                  <Image
+                    src="/icon/vaganza.jpg"
+                    alt="Upwork Logo"
+                    width={100}
+                    height={100}
+                    className="object-contain"
+                  />
+
+                  <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
                     <h3 className="text-xl font-bold">
-                      Sr. Frontend Developer
+                      Full-Stack Web Developer (Internship)
                     </h3>
                     <ul className="list-disc list-inside text-gray-400 mt-5">
                       <li className="text-base font-medium">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Designed and developed a donation platform with a CMS
+                        using Laravel, MySQL, and Eloquent.
                       </li>
                       <li className="text-base font-medium">
-                        Ut pretium arcu et massa semper, id fringilla leo
-                        semper.
+                        Developed dynamic and responsive web pages based on
+                        UI/UX mockups using HTML, Bootstrap, CSS, and SCSS.
                       </li>
                       <li className="text-base font-medium">
-                        Sed quis justo ac magna.
+                        Collaborated with UI/UX designers to ensure technical
+                        feasibility of designs.
                       </li>
                       <li className="text-base font-medium">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Worked closely with clients and developers to meet
+                        project requirements and goals.
+                      </li>
+                      <li className="text-base font-medium">
+                        Managed the development process from design to
+                        deployment, ensuring cross-browser compatibility.
                       </li>
                     </ul>
                   </div>
+
                   <div className="text-sm text-gray-400 md:text-right mt-4 md:mt-0">
-                    Nov 2021 - Present
+                    Jul 2023 - Oct 2023
                   </div>
                 </div>
               </div>
               <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
                 <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
-                    src="/icon/upwork.png"
-                    alt="Upwork Logo"
-                    width={100}
-                    height={100}
-                    className="object-contain"
-                  />
-
-                  <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
-                    <h3 className="text-xl font-bold">Team Lead</h3>
-                    <ul className="list-disc list-inside text-gray-400 mt-5">
-                      <li className="text-base font-medium">
-                        Sed quis justo ac magna.
-                      </li>
-                      <li className="text-base font-medium">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </li>
-                      <li className="text-base font-medium">
-                        Sed quis justo ac magna.
-                      </li>
-                      <li className="text-base font-medium">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="text-sm text-gray-400 md:text-right mt-4 md:mt-0">
-                    Jul 2017 - Oct 2021
-                  </div>
-                </div>
-              </div>
-              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
-                <div className="flex flex-col md:flex-row justify-between items-start">
-                  <Image
-                    src="/icon/upwork.png"
+                    src="/icon/diskominfo.jpg"
                     alt="Upwork Logo"
                     width={100}
                     height={100}
                     className="object-contain"
                   />
                   <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
-                    <h3 className="text-xl font-bold">Full Stack Developer</h3>
+                    <h3 className="text-xl font-bold">IT Support</h3>
                     <ul className="list-disc list-inside text-gray-400 mt-5">
                       <li className="text-base font-medium">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Assisted in debugging and maintaining PHP-based
+                        applications.
+                      </li>
+                      <li className="text-base font-medium">
+                        Analyzed application requirements from stakeholders.
+                      </li>
+                      <li className="text-base font-medium">
+                        Developed an Employee Attendance Information System.
+                      </li>
+                      <li className="text-base font-medium">
+                        Supported feature improvements and system optimization.
                       </li>
                     </ul>
                   </div>
                   <div className="text-sm text-gray-400 md:text-right mt-4 md:mt-0">
-                    Dec 2015 - May 2017
+                    Oct 2021 - Feb 2022
                   </div>
                 </div>
               </div>
@@ -499,7 +583,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-gray-50">
+      <div id="work" className="w-full bg-gray-50">
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-center">
             <button
@@ -520,52 +604,42 @@ export default function Home() {
                 <div className="col-span-12 lg:col-span-6">
                   <div className="flex justify-center">
                     <Image
-                      src="/img/pic.png"
+                      src="/img/visidea.png"
                       alt=""
                       height={500}
                       width={500}
                       quality={100}
+                      className="rounded-[15px]"
                     />
                   </div>
                 </div>
                 <div className="col-span-12 lg:col-span-6">
-                  <div className="text-lg">Fiskil</div>
+                  <div className="text-lg">VisideaStudio</div>
                   <div className="text-md mt-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Maecenas nec urna ac tellus volutpat viverra. Vestibulum
-                    ante ipsum primis in faucibus orci luctus et ultrices
-                    posuere cubilia curae.
+                    Developed a responsive and interactive landing page for
+                    Visidea Studio using Angular, TypeScript, and Tailwind CSS.
+                    Integrated RESTful APIs for dynamic data handling and
+                    implemented a CMS-based architecture, enabling
+                    administrators to easily manage and update all landing page
+                    content without code changes. Also handled API integration,
+                    state management, and content rendering to ensure optimal
+                    performance and user experience
                   </div>
                   <div className="mt-5 flex flex-wrap aligns-center gap-2">
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      React
-                    </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Next.js
+                      AngularJS
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
                       Typescript
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Nest.js
-                    </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      PostgreSQL
-                    </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
                       Tailwindcss
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Figma
+                      Axios
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Cypress
-                    </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Storybook
-                    </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Git
+                      Integrate REST API
                     </div>
                   </div>
                   <div className="mt-5">
@@ -575,43 +649,40 @@ export default function Home() {
               </div>
               <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
                 <div className="col-span-12 lg:col-span-6 order-2 lg:order-1">
-                  <div className="text-lg">Fiskil</div>
+                  <div className="text-lg">Photobooth Landing Page</div>
                   <div className="text-md mt-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Maecenas nec urna ac tellus volutpat viverra. Vestibulum
-                    ante ipsum primis in faucibus orci luctus et ultrices
-                    posuere cubilia curae.
+                    Developed a photobooth landing page using CodeIgniter 3,
+                    PHP, Blade templating, Ajax and Bootstrap 4. Integrated
+                    RESTful APIs for dynamic data management and implemented an
+                    interactive map using Leaflet to visualize multiple
+                    photobooth locations. Designed and implemented a CMS-driven
+                    system, enabling full control of content, location points,
+                    and other data through an admin dashboard without requiring
+                    code changes. Also handled API integration, data rendering,
+                    and UI responsiveness to ensure optimal performance and user
+                    experience.
                   </div>
                   <div className="mt-5 flex flex-wrap aligns-center gap-2">
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      React
+                      PHP
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Next.js
+                      Ajax
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Typescript
+                      CodeIgniter 3
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Nest.js
+                      Bootstrap 4
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      PostgreSQL
+                      CSS
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Tailwindcss
+                      REST API
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Figma
-                    </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Cypress
-                    </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Storybook
-                    </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
-                      Git
+                      Blade Templating
                     </div>
                   </div>
                   <div className="mt-5">
@@ -621,16 +692,17 @@ export default function Home() {
                 <div className="col-span-12 lg:col-span-6 order-1 lg:order-2">
                   <div className="flex justify-center">
                     <Image
-                      src="/img/pic.png"
+                      src="/img/photobooth.png"
                       alt=""
                       height={500}
                       width={500}
                       quality={100}
+                      className="rounded-[15px]"
                     />
                   </div>
                 </div>
               </div>
-              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
+              {/* <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
                 <div className="col-span-12 lg:col-span-6">
                   <div className="flex justify-center">
                     <Image
@@ -686,7 +758,7 @@ export default function Home() {
                     <CiShare1 size={32} />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -781,7 +853,7 @@ export default function Home() {
           </div>
         </div>
       </div> */}
-      <div className="w-full bg-gray-50 pb-10">
+      <div id="contact" className="w-full bg-gray-50 pb-10">
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-center">
             <button
@@ -800,16 +872,52 @@ export default function Home() {
           </div>
           <div className="w-full mt-10">
             <div className="flex justify-center items-center gap-5">
-              <AiOutlineMail size={24} className="text-gray-400" />
-              <div className="text-2xl font-bold">ranggaputra681@gmail.com</div>
-              <FaRegCopy size={24} className="text-gray-400" />
+              <a href="mailto:ranggaputra681@gmail.com" title="Send Email">
+                <AiOutlineMail size={24} className="text-gray-400 hover:text-black transition-colors" />
+              </a>
+              <a
+                href="mailto:ranggaputra681@gmail.com"
+                className="text-2xl font-bold hover:underline transition-all"
+              >
+                ranggaputra681@gmail.com
+              </a>
+              <button
+                onClick={() => handleCopy("ranggaputra681@gmail.com", "email")}
+                title="Copy email"
+                className="relative"
+              >
+                {copiedEmail ? (
+                  <span className="text-sm text-green-500 font-medium">Copied!</span>
+                ) : (
+                  <FaRegCopy size={24} className="text-gray-400 hover:text-black transition-colors cursor-pointer" />
+                )}
+              </button>
             </div>
           </div>
           <div className="w-full mt-10">
             <div className="flex justify-center items-center gap-5">
-              <FiPhone size={24} className="text-gray-400" />
-              <div className="text-2xl font-bold">+62 813 8358 5869</div>
-              <FaRegCopy size={24} className="text-gray-400" />
+              <a href="https://wa.me/6281383585869" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
+                <FiPhone size={24} className="text-gray-400 hover:text-black transition-colors" />
+              </a>
+              <a
+                href="https://wa.me/6281383585869"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-2xl font-bold hover:underline transition-all"
+              >
+                +62 813 8358 5869
+              </a>
+              <button
+                onClick={() => handleCopy("+62 813 8358 5869", "phone")}
+                title="Copy phone number"
+                className="relative"
+              >
+                {copiedPhone ? (
+                  <span className="text-sm text-green-500 font-medium">Copied!</span>
+                ) : (
+                  <FaRegCopy size={24} className="text-gray-400 hover:text-black transition-colors cursor-pointer" />
+                )}
+              </button>
             </div>
           </div>
           <div className="w-full mt-10">
@@ -828,7 +936,7 @@ export default function Home() {
       </div>
       <div className="w-full bg-gray-300 py-5">
         <div className="text-lg text-center text-gray-50">
-          © 2025 | Designed and coded with ❤️ by Miracle
+          © 2025 | Designed and coded with ❤️ by Rangga
         </div>
       </div>
     </div>
