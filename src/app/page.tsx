@@ -17,13 +17,46 @@ import { AiOutlineMail } from "react-icons/ai";
 import { FaFigma, FaRegCopy } from "react-icons/fa";
 import { FiGithub, FiPhone } from "react-icons/fi";
 import { CV_CONFIG } from "@/config/cv";
+import { dict } from "@/config/i18n";
+
+const IndoFlag = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2" className="w-[18px] h-auto rounded-[2px] shadow-sm">
+    <rect width="3" height="2" fill="#fff"/>
+    <rect width="3" height="1" fill="#ce1126"/>
+  </svg>
+);
+
+const UKFlag = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-[18px] h-auto rounded-[2px] shadow-sm">
+    <clipPath id="s">
+      <path d="M0,0 v30 h60 v-30 z"/>
+    </clipPath>
+    <clipPath id="t">
+      <path d="M30,15 h30 v15 z v-15 h-30 z h-30 v-15 z v15 h30 z"/>
+    </clipPath>
+    <g clipPath="url(#s)">
+      <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
+      <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#C8102E" strokeWidth="4"/>
+      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
+      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/>
+    </g>
+  </svg>
+);
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [lang, setLang] = useState<"en" | "id">("en");
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+
+  const toggleLanguage = () => {
+    const next = lang === "en" ? "id" : "en";
+    setLang(next);
+    localStorage.setItem("lang", next);
+  };
 
   const toggleDark = () => {
     const next = !isDark;
@@ -58,10 +91,14 @@ export default function Home() {
   };
   useEffect(() => {
     setIsClient(true);
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
       setIsDark(true);
       document.documentElement.classList.add("dark");
+    }
+    const savedLang = localStorage.getItem("lang") as "en" | "id";
+    if (savedLang) {
+      setLang(savedLang);
     }
   }, []);
 
@@ -123,49 +160,71 @@ export default function Home() {
               href="#about"
               className="text-lg cursor-pointer hover:text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:-translate-y-1"
             >
-              About
+              {dict[lang].nav.about}
             </a>
             <a
               href="#work"
               className="text-lg cursor-pointer hover:text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:-translate-y-1"
             >
-              Work
+              {dict[lang].nav.work}
             </a>
             {/* <a href="#testimonials" className="text-lg cursor-pointer hover:text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:-translate-y-1">Testimonials</a> */}
             <a
               href="#contact"
               className="text-lg cursor-pointer hover:text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:-translate-y-1"
             >
-              Contact
+              {dict[lang].nav.contact}
             </a>
-            <div className="text-lg hover:scale-110 transition-transform duration-300">
+            <div className="flex items-center gap-x-2 text-lg">
               <button
-                onClick={toggleDark}
-                title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-                className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                onClick={toggleLanguage}
+                title={lang === "en" ? "Switch to Indonesian" : "Switch to English"}
+                className="h-8 px-2 flex items-center justify-center font-bold text-xs rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
               >
-                {isDark ? (
-                  <Moon
-                    size={22}
-                    className="text-gray-700 dark:text-yellow-300 transition-transform duration-300 rotate-0"
-                  />
-                ) : (
-                  <Sun
-                    size={22}
-                    className="text-yellow-500 transition-transform duration-300 rotate-0"
-                  />
-                )}
+                <div className="flex items-center gap-1.5">
+                  {lang === "en" ? <UKFlag /> : <IndoFlag />}
+                  <span>{lang === "en" ? "EN" : "ID"}</span>
+                </div>
               </button>
+              <div className="hover:scale-110 transition-transform duration-300">
+                <button
+                  onClick={toggleDark}
+                  title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                  className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                >
+                  {isDark ? (
+                    <Moon
+                      size={22}
+                      className="text-gray-700 dark:text-yellow-300 transition-transform duration-300 rotate-0"
+                    />
+                  ) : (
+                    <Sun
+                      size={22}
+                      className="text-yellow-500 transition-transform duration-300 rotate-0"
+                    />
+                  )}
+                </button>
+              </div>
             </div>
             <button
               onClick={handleDownloadCV}
               className="w-full bg-black dark:bg-white text-white dark:text-black font-medium p-3 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 active:scale-95 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
-              Download CV
+              {dict[lang].nav.downloadCV}
             </button>
           </div>
 
           <div className="flex lg:hidden items-center gap-x-3 relative z-50">
+            <button
+              onClick={toggleLanguage}
+              title={lang === "en" ? "Switch to Indonesian" : "Switch to English"}
+              className="h-9 px-2 flex items-center justify-center font-bold text-xs rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-110 transition-all duration-300"
+            >
+              <div className="flex items-center gap-1.5">
+                {lang === "en" ? <UKFlag /> : <IndoFlag />}
+                <span>{lang === "en" ? "EN" : "ID"}</span>
+              </div>
+            </button>
             <button
               onClick={toggleDark}
               title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
@@ -212,36 +271,45 @@ export default function Home() {
                     onClick={() => setMenuOpen(false)}
                     className="text-base font-medium text-gray-800 dark:text-gray-300 hover:text-gray-500 dark:hover:text-white transition-colors"
                   >
-                    About
+                    {dict[lang].nav.about}
                   </a>
                   <a
                     href="#work"
                     onClick={() => setMenuOpen(false)}
                     className="text-base font-medium text-gray-800 dark:text-gray-300 hover:text-gray-500 dark:hover:text-white transition-colors"
                   >
-                    Work
+                    {dict[lang].nav.work}
                   </a>
-                  <a
+                  {/* <a
                     href="#testimonials"
                     onClick={() => setMenuOpen(false)}
                     className="text-base font-medium text-gray-800 dark:text-gray-300 hover:text-gray-500 dark:hover:text-white transition-colors"
                   >
                     Testimonials
-                  </a>
+                  </a> */}
                   <a
                     href="#contact"
                     onClick={() => setMenuOpen(false)}
                     className="text-base font-medium text-gray-800 dark:text-gray-300 hover:text-gray-500 dark:hover:text-white transition-colors"
                   >
-                    Contact
+                    {dict[lang].nav.contact}
                   </a>
                 </div>
 
                 <div className="border-t border-gray-100 dark:border-white/10 px-5 py-6 flex flex-col space-y-6 mt-2">
                   <div className="flex justify-between items-center">
                     <span className="text-base font-medium text-gray-800 dark:text-gray-300">
-                      Switch Theme
+                      {dict[lang].nav.switchTheme}
                     </span>
+                    <div className="flex items-center gap-x-2">
+                    <button
+                      onClick={toggleLanguage}
+                      title={lang === "en" ? "Switch to Indonesian" : "Switch to English"}
+                      className="px-2 py-1 flex items-center gap-1.5 flex-row rounded-full text-gray-800 dark:text-gray-200 transition-colors duration-200 font-bold"
+                    >
+                      {lang === "en" ? <UKFlag /> : <IndoFlag />}
+                      <span>{lang === "en" ? "EN" : "ID"}</span>
+                    </button>
                     <button
                       onClick={toggleDark}
                       title={
@@ -258,6 +326,7 @@ export default function Home() {
                         <Sun size={22} className="text-gray-500" />
                       )}
                     </button>
+                    </div>
                   </div>
 
                   <button
@@ -267,7 +336,7 @@ export default function Home() {
                     }}
                     className="w-full bg-black dark:bg-white text-white dark:text-black font-semibold py-3 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 active:scale-95 transition-all duration-300"
                   >
-                    Download CV
+                    {dict[lang].nav.downloadCV}
                   </button>
                 </div>
               </div>
@@ -282,27 +351,18 @@ export default function Home() {
               data-aos-duration="1000"
             >
               <div className="text-3xl lg:text-6xl mt-5 lg:mt-0 font-bold">
-                Hi, I`m Rangga 👋
+                {dict[lang].hero.greeting}
               </div>
-              <div className="text-lg mt-5 lg:mt-10 text-gray-400">
-                Frontend Developer with hands-on experience in building and
-                maintaining responsive web applications. Skilled in JavaScript
-                and TypeScript, with a strong focus on creating clean, scalable,
-                and user-friendly interfaces. <br />
-                <br />
-                Experienced in working with modern frontend frameworks,
-                integrating REST APIs, and collaborating with cross-functional
-                teams (UI/UX, Backend, QA). Proven ability to manage multiple
-                projects simultaneously while maintaining high code quality and
-                performance.
+              <div className="text-lg mt-5 lg:mt-10 text-gray-400 md:leading-relaxed">
+                <span dangerouslySetInnerHTML={{ __html: `${dict[lang].hero.desc1} <br /><br /> ${dict[lang].hero.desc2}` }} />
               </div>
               <div className="mt-10">
                 <div className="text-lg flex items-center gap-x-4">
-                  <MapPin /> Bandung, Indonesia
+                  <MapPin /> {dict[lang].hero.location}
                 </div>
                 <div className="text-lg flex items-center gap-x-4 ml-1.5 mt-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full mr-1.5"></div>
-                  Available for new projects and open to work
+                  {dict[lang].hero.available}
                 </div>
               </div>
               <div className="mt-10">
@@ -363,7 +423,7 @@ export default function Home() {
               className="bg-gray-200 text-black py-1 px-6 rounded-xl"
               disabled
             >
-              About Me
+              {dict[lang].about.title}
             </button>
           </div>
           <div className="flex p-5 mt-10">
@@ -393,58 +453,43 @@ export default function Home() {
                 data-aos-duration="800"
               >
                 <div className="text-2xl font-bold">
-                  Curious about me? Here you have it:
+                  {dict[lang].about.subtitle}
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  Hi, I'm Rangga Putra — a Frontend Developer based in Bandung,
-                  Indonesia, with a passion for building clean, responsive, and
-                  user-friendly web applications.
+                  {dict[lang].about.p1}
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  My journey in web development started back in 2022 when I
-                  interned at a government agency, and since then I haven't
-                  looked back. I've grown from debugging PHP apps to managing up
-                  to 9 active products simultaneously as a professional frontend
-                  developer — and I genuinely enjoy every bit of the challenge.
+                  {dict[lang].about.p2}
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  I specialize in Angular and TypeScript, with solid experience
-                  in Laravel, Bootstrap, Tailwind CSS, and REST API integration.
-                  I care deeply about writing readable, performant code and
-                  delivering interfaces that feel great to use.
+                  {dict[lang].about.p3}
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  Currently, I'm a Frontend Developer at PT. Adhikari Invoasi
-                  Indonesia, where I work closely with UI/UX designers and
-                  backend teams to ship high-quality features across multiple
-                  products. Before that, I freelanced for 2+ years, completing
-                  over 30 web projects for clients across various industries.
+                  {dict[lang].about.p4}
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  A few quick things about me:
+                  {dict[lang].about.p5}
                 </div>
                 <div className="text-lg flex flex-col lg:flex-row lg:justify-between text-gray-400 mt-5 gap-y-2 lg:gap-y-0">
                   <ul className="list-disc list-inside pl-2 text-gray-400">
                     <li className="text-sm font-medium">
-                      Bachelor's in Informatics Engineering — Politeknik Pos
-                      Indonesia
+                      {dict[lang].about.ul1[0]}
                     </li>
                     <li className="text-sm font-medium">
-                      Open to freelance opportunities
+                      {dict[lang].about.ul1[1]}
                     </li>
                   </ul>
                   <ul className="list-disc list-inside pl-2 text-gray-400">
                     <li className="text-sm font-medium">
-                      Currently building with Angular, TypeScript & Laravel
+                      {dict[lang].about.ul2[0]}
                     </li>
                     <li className="text-sm font-medium">
-                      Based in Bandung, always happy to connect
+                      {dict[lang].about.ul2[1]}
                     </li>
                   </ul>
                 </div>
                 <div className="text-lg text-gray-400 mt-5">
-                  One last thing, I`m available for freelance work, so feel free
-                  to reach out and say hello! I promise I don`t bite 😉
+                  {dict[lang].about.p6}
                 </div>
               </div>
             </div>
@@ -458,12 +503,12 @@ export default function Home() {
               className="bg-gray-200 text-black py-1 px-6 rounded-xl"
               disabled
             >
-              Skills
+              {dict[lang].skills.title}
             </button>
           </div>
           <div className="w-full">
             <div className="text-lg text-center mt-5 text-gray-400">
-              The skills, tools and technologies I am really good at:
+              {dict[lang].skills.subtitle}
             </div>
           </div>
           <ul
@@ -637,12 +682,12 @@ export default function Home() {
               className="bg-gray-200 text-black py-1 px-6 rounded-xl"
               disabled
             >
-              Experience
+              {dict[lang].experience.title}
             </button>
           </div>
           <div className="w-full" data-aos="fade-up" data-aos-delay="100">
             <div className="text-lg text-center mt-5 text-gray-400">
-              Here is a quick summary of my most recent experiences:
+              {dict[lang].experience.subtitle}
             </div>
           </div>
           <div className="container mx-auto mt-10">
@@ -661,34 +706,30 @@ export default function Home() {
                     className="object-contain"
                   />
                   <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
-                    <h3 className="text-xl font-bold">Frontend Developer</h3>
+                    <h3 className="text-xl font-bold">{dict[lang].experience.awh.role}</h3>
                     <ul className="list-disc list-inside text-gray-400 mt-5">
                       <li className="text-base font-medium">
-                        Develop and maintain web applications using Angular and
-                        TypeScript .
+                        {dict[lang].experience.awh.tasks[0]}
                       </li>
                       <li className="text-base font-medium">
-                        Manage multiple projects simultaneously (up to 9 active
-                        products).
+                        {dict[lang].experience.awh.tasks[1]}
                       </li>
                       <li className="text-base font-medium">
-                        Implement new features based on business and user
-                        requirements .
+                        {dict[lang].experience.awh.tasks[2]}
                       </li>
                       <li className="text-base font-medium">
-                        Perform bug fixing and optimize application performance.
+                        {dict[lang].experience.awh.tasks[3]}
                       </li>
                       <li className="text-base font-medium">
-                        Integrate frontend applications with REST APIs.
+                        {dict[lang].experience.awh.tasks[4]}
                       </li>
                       <li className="text-base font-medium">
-                        Collaborate with UI/UX designers and backend developers
-                        to deliver high-quality features.
+                        {dict[lang].experience.awh.tasks[5]}
                       </li>
                     </ul>
                   </div>
                   <div className="text-sm text-gray-400 md:text-right mt-4 md:mt-0">
-                    Jan 2024 - Present
+                    {dict[lang].experience.awh.date}
                   </div>
                 </div>
               </div>
@@ -708,34 +749,29 @@ export default function Home() {
 
                   <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
                     <h3 className="text-xl font-bold">
-                      Full-Stack Web Developer (Internship)
+                      {dict[lang].experience.vaganza.role}
                     </h3>
                     <ul className="list-disc list-inside text-gray-400 mt-5">
                       <li className="text-base font-medium">
-                        Designed and developed a donation platform with a CMS
-                        using Laravel, MySQL, and Eloquent.
+                        {dict[lang].experience.vaganza.tasks[0]}
                       </li>
                       <li className="text-base font-medium">
-                        Developed dynamic and responsive web pages based on
-                        UI/UX mockups using HTML, Bootstrap, CSS, and SCSS.
+                        {dict[lang].experience.vaganza.tasks[1]}
                       </li>
                       <li className="text-base font-medium">
-                        Collaborated with UI/UX designers to ensure technical
-                        feasibility of designs.
+                        {dict[lang].experience.vaganza.tasks[2]}
                       </li>
                       <li className="text-base font-medium">
-                        Worked closely with clients and developers to meet
-                        project requirements and goals.
+                        {dict[lang].experience.vaganza.tasks[3]}
                       </li>
                       <li className="text-base font-medium">
-                        Managed the development process from design to
-                        deployment, ensuring cross-browser compatibility.
+                        {dict[lang].experience.vaganza.tasks[4]}
                       </li>
                     </ul>
                   </div>
 
                   <div className="text-sm text-gray-400 md:text-right mt-4 md:mt-0">
-                    Jul 2023 - Oct 2023
+                    {dict[lang].experience.vaganza.date}
                   </div>
                 </div>
               </div>
@@ -753,25 +789,24 @@ export default function Home() {
                     className="object-contain"
                   />
                   <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
-                    <h3 className="text-xl font-bold">IT Support</h3>
+                    <h3 className="text-xl font-bold">{dict[lang].experience.diskominfo.role}</h3>
                     <ul className="list-disc list-inside text-gray-400 mt-5">
                       <li className="text-base font-medium">
-                        Assisted in debugging and maintaining PHP-based
-                        applications.
+                        {dict[lang].experience.diskominfo.tasks[0]}
                       </li>
                       <li className="text-base font-medium">
-                        Analyzed application requirements from stakeholders.
+                        {dict[lang].experience.diskominfo.tasks[1]}
                       </li>
                       <li className="text-base font-medium">
-                        Developed an Employee Attendance Information System.
+                        {dict[lang].experience.diskominfo.tasks[2]}
                       </li>
                       <li className="text-base font-medium">
-                        Supported feature improvements and system optimization.
+                        {dict[lang].experience.diskominfo.tasks[3]}
                       </li>
                     </ul>
                   </div>
                   <div className="text-sm text-gray-400 md:text-right mt-4 md:mt-0">
-                    Oct 2021 - Feb 2022
+                    {dict[lang].experience.diskominfo.date}
                   </div>
                 </div>
               </div>
@@ -786,12 +821,12 @@ export default function Home() {
               className="bg-gray-200 text-black py-1 px-6 rounded-xl"
               disabled
             >
-              Work
+              {dict[lang].work.title}
             </button>
           </div>
           <div className="w-full" data-aos="fade-up" data-aos-delay="100">
             <div className="text-lg text-center mt-5 text-gray-400">
-              Some of the noteworthy projects i have built:
+              {dict[lang].work.subtitle}
             </div>
           </div>
           <div className="container mx-auto mt-10">
@@ -816,14 +851,7 @@ export default function Home() {
                 <div className="col-span-12 lg:col-span-6">
                   <div className="text-lg">VisideaStudio</div>
                   <div className="text-md mt-5">
-                    Developed a responsive and interactive landing page for
-                    Visidea Studio using Angular, TypeScript, and Tailwind CSS.
-                    Integrated RESTful APIs for dynamic data handling and
-                    implemented a CMS-based architecture, enabling
-                    administrators to easily manage and update all landing page
-                    content without code changes. Also handled API integration,
-                    state management, and content rendering to ensure optimal
-                    performance and user experience
+                    {dict[lang].work.visidea.desc}
                   </div>
                   <div className="mt-5 flex flex-wrap aligns-center gap-2">
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
@@ -855,16 +883,7 @@ export default function Home() {
                 <div className="col-span-12 lg:col-span-6 order-2 lg:order-1">
                   <div className="text-lg">Photobooth Landing Page</div>
                   <div className="text-md mt-5">
-                    Developed a photobooth landing page using CodeIgniter 3,
-                    PHP, Blade templating, Ajax and Bootstrap 4. Integrated
-                    RESTful APIs for dynamic data management and implemented an
-                    interactive map using Leaflet to visualize multiple
-                    photobooth locations. Designed and implemented a CMS-driven
-                    system, enabling full control of content, location points,
-                    and other data through an admin dashboard without requiring
-                    code changes. Also handled API integration, data rendering,
-                    and UI responsiveness to ensure optimal performance and user
-                    experience.
+                    {dict[lang].work.photobooth.desc}
                   </div>
                   <div className="mt-5 flex flex-wrap aligns-center gap-2">
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
@@ -1064,14 +1083,12 @@ export default function Home() {
               className="bg-gray-200 text-black py-1 px-6 rounded-xl"
               disabled
             >
-              Get In Touch
+              {dict[lang].contact.title}
             </button>
           </div>
           <div className="w-full" data-aos="fade-up" data-aos-delay="100">
             <div className="text-lg text-center mt-5 text-gray-400">
-              What’s next? Feel free to reach out to me if youre looking for
-              <br /> a Frontend Developer, have a query, or simply want to
-              connect.
+              <span dangerouslySetInnerHTML={{ __html: dict[lang].contact.subtitle }} />
             </div>
           </div>
           <div className="w-full mt-10" data-aos="fade-up" data-aos-delay="200">
@@ -1147,7 +1164,7 @@ export default function Home() {
           </div>
           <div className="w-full mt-10" data-aos="fade-up" data-aos-delay="400">
             <div className="text-lg text-center text-gray-400">
-              You may also find me on these platforms!
+              {dict[lang].contact.platforms}
             </div>
           </div>
           <div className="w-full mt-3" data-aos="fade-up" data-aos-delay="500">
@@ -1182,7 +1199,7 @@ export default function Home() {
       </div>
       <div className="w-full bg-gray-300 py-5">
         <div className="text-sm lg:text-lg text-center text-gray-50">
-          © 2025 | Designed and coded with ❤️ by Rangga
+          {dict[lang].contact.footer}
         </div>
       </div>
     </div>
