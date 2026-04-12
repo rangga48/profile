@@ -63,38 +63,20 @@ export default function Home() {
       setIsDark(true);
       document.documentElement.classList.add("dark");
     }
-    // Load AOS via CDN to bypass npm module resolution issues
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
-    document.head.appendChild(link);
+  }, []);
 
-    // Ensure we don't inject multiple times across hot reloads
-    if (!document.querySelector('script[src*="aos.js"]')) {
-      const script = document.createElement("script");
-      script.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
-      script.async = true;
-      script.onload = () => {
-        // @ts-ignore
-        if (window.AOS) {
-          // @ts-ignore
-          window.AOS.init({
-            once: false,
-            mirror: true,
-            easing: "ease-out-cubic",
-            duration: 800,
-            offset: 50,
-            delay: 50,
-          });
-          // Small timeout to allow styles to settle and recalculate positions
-          setTimeout(() => {
-            // @ts-ignore
-            window.AOS.refresh();
-          }, 300);
-        }
-      };
-      document.body.appendChild(script);
-    } else {
+  useEffect(() => {
+    if (!isClient) return;
+
+    // Load AOS via CDN to bypass npm module resolution issues
+    if (!document.querySelector('link[href*="aos.css"]')) {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
+      document.head.appendChild(link);
+    }
+
+    const initAOS = () => {
       // @ts-ignore
       if (window.AOS) {
         // @ts-ignore
@@ -103,12 +85,28 @@ export default function Home() {
           mirror: true,
           easing: "ease-out-cubic",
           duration: 800,
+          offset: 50,
+          delay: 50,
         });
-        // @ts-ignore
-        window.AOS.refresh();
+        // Small timeout to allow styles to settle and recalculate positions
+        setTimeout(() => {
+          // @ts-ignore
+          window.AOS.refresh();
+        }, 500);
       }
+    };
+
+    // Ensure we don't inject multiple times across hot reloads
+    if (!document.querySelector('script[src*="aos.js"]')) {
+      const script = document.createElement("script");
+      script.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
+      script.async = true;
+      script.onload = initAOS;
+      document.body.appendChild(script);
+    } else {
+      initAOS();
     }
-  }, []);
+  }, [isClient]);
 
   if (!isClient) {
     return null;
