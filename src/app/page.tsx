@@ -79,7 +79,8 @@ export default function Home() {
         if (window.AOS) {
           // @ts-ignore
           window.AOS.init({ 
-            once: true, 
+            once: false,
+            mirror: true,
             easing: "ease-out-cubic", 
             duration: 800,
             offset: 50,
@@ -97,7 +98,7 @@ export default function Home() {
         // @ts-ignore
         if (window.AOS) {
           // @ts-ignore
-          window.AOS.init({ once: true, easing: "ease-out-cubic", duration: 800 });
+          window.AOS.init({ once: false, mirror: true, easing: "ease-out-cubic", duration: 800 });
           // @ts-ignore
           window.AOS.refresh();
         }
