@@ -114,7 +114,7 @@ export default function Home() {
     return null;
   }
   return (
-    <div>
+    <div className="overflow-x-hidden overflow-y-clip">
       <div className="w-full container mx-auto px-4">
         <div className="flex justify-between items-center py-5 px-5 relative">
           <div className="flex items-center z-50 relative">
