@@ -78,13 +78,13 @@ export default function Home() {
         // @ts-ignore
         if (window.AOS) {
           // @ts-ignore
-          window.AOS.init({ 
+          window.AOS.init({
             once: false,
             mirror: true,
-            easing: "ease-out-cubic", 
+            easing: "ease-out-cubic",
             duration: 800,
             offset: 50,
-            delay: 50 
+            delay: 50,
           });
           // Small timeout to allow styles to settle and recalculate positions
           setTimeout(() => {
@@ -95,13 +95,18 @@ export default function Home() {
       };
       document.body.appendChild(script);
     } else {
+      // @ts-ignore
+      if (window.AOS) {
         // @ts-ignore
-        if (window.AOS) {
-          // @ts-ignore
-          window.AOS.init({ once: false, mirror: true, easing: "ease-out-cubic", duration: 800 });
-          // @ts-ignore
-          window.AOS.refresh();
-        }
+        window.AOS.init({
+          once: false,
+          mirror: true,
+          easing: "ease-out-cubic",
+          duration: 800,
+        });
+        // @ts-ignore
+        window.AOS.refresh();
+      }
     }
   }, []);
 
@@ -189,50 +194,86 @@ export default function Home() {
           </div>
 
           {menuOpen && (
-            <>
-              <div
-                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden transition-opacity"
-                onClick={() => setMenuOpen(false)}
-              />
-              <div className="absolute top-[calc(100%+0.5rem)] left-4 right-4 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 shadow-2xl rounded-3xl flex flex-col p-6 space-y-6 lg:hidden z-50 transition-transform origin-top">
-                <div className="flex flex-col space-y-5">
+            <div className="fixed inset-0 bg-white dark:bg-[#0B0C10] z-[100] flex flex-col lg:hidden transition-all duration-300 overflow-hidden">
+              <div className="flex justify-between items-center py-5 px-5 border-b border-gray-100 dark:border-white/10">
+                <div className="text-xl tracking-tighter font-bold text-black dark:text-white">
+                  {"</>"}
+                </div>
+                <button
+                  className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              <div className="flex flex-col flex-1">
+                <div className="flex flex-col px-5 py-6 space-y-6">
                   <a
                     href="#about"
                     onClick={() => setMenuOpen(false)}
-                    className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400 transition-colors"
+                    className="text-base font-medium text-gray-800 dark:text-gray-300 hover:text-gray-500 dark:hover:text-white transition-colors"
                   >
                     About
                   </a>
-                  <div className="w-full h-px bg-gray-100 dark:bg-gray-800"></div>
                   <a
                     href="#work"
                     onClick={() => setMenuOpen(false)}
-                    className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400 transition-colors"
+                    className="text-base font-medium text-gray-800 dark:text-gray-300 hover:text-gray-500 dark:hover:text-white transition-colors"
                   >
                     Work
                   </a>
-                  <div className="w-full h-px bg-gray-100 dark:bg-gray-800"></div>
+                  <a
+                    href="#testimonials"
+                    onClick={() => setMenuOpen(false)}
+                    className="text-base font-medium text-gray-800 dark:text-gray-300 hover:text-gray-500 dark:hover:text-white transition-colors"
+                  >
+                    Testimonials
+                  </a>
                   <a
                     href="#contact"
                     onClick={() => setMenuOpen(false)}
-                    className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-400 transition-colors"
+                    className="text-base font-medium text-gray-800 dark:text-gray-300 hover:text-gray-500 dark:hover:text-white transition-colors"
                   >
                     Contact
                   </a>
                 </div>
-                <div className="pt-2">
+
+                <div className="border-t border-gray-100 dark:border-white/10 px-5 py-6 flex flex-col space-y-6 mt-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-base font-medium text-gray-800 dark:text-gray-300">
+                      Switch Theme
+                    </span>
+                    <button
+                      onClick={toggleDark}
+                      title={
+                        isDark ? "Switch to Light Mode" : "Switch to Dark Mode"
+                      }
+                      className="p-1 rounded-full text-gray-800 dark:text-gray-200 transition-colors duration-200"
+                    >
+                      {isDark ? (
+                        <Moon
+                          size={22}
+                          className="text-gray-700 dark:text-gray-300"
+                        />
+                      ) : (
+                        <Sun size={22} className="text-gray-500" />
+                      )}
+                    </button>
+                  </div>
+
                   <button
                     onClick={() => {
                       handleDownloadCV();
                       setMenuOpen(false);
                     }}
-                    className="w-full bg-black dark:bg-white text-white dark:text-black font-semibold py-3.5 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 active:scale-95 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                    className="w-full bg-black dark:bg-white text-white dark:text-black font-semibold py-3 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 active:scale-95 transition-all duration-300"
                   >
                     Download CV
                   </button>
                 </div>
               </div>
-            </>
+            </div>
           )}
         </div>
         <div className="flex p-5">
@@ -803,9 +844,9 @@ export default function Home() {
                       Integrate REST API
                     </div>
                   </div>
-                  <div className="mt-5">
+                  {/* <div className="mt-5">
                     <CiShare1 size={32} />
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div
@@ -850,9 +891,9 @@ export default function Home() {
                       Blade Templating
                     </div>
                   </div>
-                  <div className="mt-5">
+                  {/* <div className="mt-5">
                     <CiShare1 size={32} />
-                  </div>
+                  </div> */}
                 </div>
                 <div className="col-span-12 lg:col-span-6 order-1 lg:order-2">
                   <div className="flex justify-center">
