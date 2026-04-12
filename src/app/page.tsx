@@ -63,6 +63,45 @@ export default function Home() {
       setIsDark(true);
       document.documentElement.classList.add("dark");
     }
+    // Load AOS via CDN to bypass npm module resolution issues
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://unpkg.com/aos@2.3.1/dist/aos.css";
+    document.head.appendChild(link);
+
+    // Ensure we don't inject multiple times across hot reloads
+    if (!document.querySelector('script[src*="aos.js"]')) {
+      const script = document.createElement("script");
+      script.src = "https://unpkg.com/aos@2.3.1/dist/aos.js";
+      script.async = true;
+      script.onload = () => {
+        // @ts-ignore
+        if (window.AOS) {
+          // @ts-ignore
+          window.AOS.init({ 
+            once: true, 
+            easing: "ease-out-cubic", 
+            duration: 800,
+            offset: 50,
+            delay: 50 
+          });
+          // Small timeout to allow styles to settle and recalculate positions
+          setTimeout(() => {
+            // @ts-ignore
+            window.AOS.refresh();
+          }, 300);
+        }
+      };
+      document.body.appendChild(script);
+    } else {
+        // @ts-ignore
+        if (window.AOS) {
+          // @ts-ignore
+          window.AOS.init({ once: true, easing: "ease-out-cubic", duration: 800 });
+          // @ts-ignore
+          window.AOS.refresh();
+        }
+    }
   }, []);
 
   if (!isClient) {
@@ -78,24 +117,24 @@ export default function Home() {
           <div className="hidden lg:flex items-center gap-x-7">
             <a
               href="#about"
-              className="text-lg cursor-pointer hover:text-gray-500 transition-colors"
+              className="text-lg cursor-pointer hover:text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:-translate-y-1"
             >
               About
             </a>
             <a
               href="#work"
-              className="text-lg cursor-pointer hover:text-gray-500 transition-colors"
+              className="text-lg cursor-pointer hover:text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:-translate-y-1"
             >
               Work
             </a>
-            {/* <a href="#testimonials" className="text-lg cursor-pointer hover:text-gray-500 transition-colors">Testimonials</a> */}
+            {/* <a href="#testimonials" className="text-lg cursor-pointer hover:text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:-translate-y-1">Testimonials</a> */}
             <a
               href="#contact"
-              className="text-lg cursor-pointer hover:text-gray-500 transition-colors"
+              className="text-lg cursor-pointer hover:text-gray-500 dark:hover:text-gray-300 transition-all duration-300 hover:-translate-y-1"
             >
               Contact
             </a>
-            <div className="text-lg">
+            <div className="text-lg hover:scale-110 transition-transform duration-300">
               <button
                 onClick={toggleDark}
                 title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
@@ -116,7 +155,7 @@ export default function Home() {
             </div>
             <button
               onClick={handleDownloadCV}
-              className="w-full bg-black dark:bg-white text-white dark:text-black font-medium p-3 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 active:scale-95 transition-all duration-200"
+              className="w-full bg-black dark:bg-white text-white dark:text-black font-medium p-3 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 active:scale-95 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
             >
               Download CV
             </button>
@@ -126,7 +165,7 @@ export default function Home() {
             <button
               onClick={toggleDark}
               title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-110 transition-all duration-300"
             >
               {isDark ? (
                 <Moon
@@ -141,7 +180,7 @@ export default function Home() {
               )}
             </button>
             <button
-              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-200"
+              className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 hover:scale-110 transition-all duration-300"
               onClick={() => setMenuOpen((prev) => !prev)}
             >
               {menuOpen ? <X size={20} /> : <AlignJustify size={20} />}
@@ -186,7 +225,7 @@ export default function Home() {
                       handleDownloadCV();
                       setMenuOpen(false);
                     }}
-                    className="w-full bg-black dark:bg-white text-white dark:text-black font-semibold py-3.5 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 active:scale-95 transition-all duration-200"
+                    className="w-full bg-black dark:bg-white text-white dark:text-black font-semibold py-3.5 rounded-xl hover:bg-gray-800 dark:hover:bg-gray-200 active:scale-95 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                   >
                     Download CV
                   </button>
@@ -197,7 +236,11 @@ export default function Home() {
         </div>
         <div className="flex p-5">
           <div className="grid grid-cols-12 gap-4">
-            <div className="col-span-12 lg:col-span-6 p-5 order-2 lg:order-1">
+            <div
+              className="col-span-12 lg:col-span-6 p-5 order-2 lg:order-1"
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            >
               <div className="text-3xl lg:text-6xl mt-5 lg:mt-0 font-bold">
                 Hi, I`m Rangga 👋
               </div>
@@ -215,11 +258,11 @@ export default function Home() {
               </div>
               <div className="mt-10">
                 <div className="text-lg flex items-center gap-x-4">
-                  <MapPin /> Bandung
+                  <MapPin /> Bandung, Indonesia
                 </div>
                 <div className="text-lg flex items-center gap-x-4 ml-1.5 mt-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full mr-1.5"></div>
-                  Available for new projects
+                  Available for new projects and open to work
                 </div>
               </div>
               <div className="mt-10">
@@ -228,7 +271,7 @@ export default function Home() {
                     href="https://github.com/rangga48"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-black dark:hover:text-white transition-colors"
+                    className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:scale-110 hover:-translate-y-1 transition-all duration-300"
                   >
                     <Github />
                   </a>
@@ -236,7 +279,7 @@ export default function Home() {
                     href="https://www.instagram.com/mweh.48/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-black dark:hover:text-white transition-colors"
+                    className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:scale-110 hover:-translate-y-1 transition-all duration-300"
                   >
                     <Instagram />
                   </a>
@@ -244,19 +287,23 @@ export default function Home() {
                     href="https://www.linkedin.com/in/rangga-putra/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-black dark:hover:text-white transition-colors"
+                    className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:scale-110 hover:-translate-y-1 transition-all duration-300"
                   >
                     <Linkedin />
                   </a>
                 </div>
               </div>
             </div>
-            <div className="col-span-12 lg:col-span-6 flex justify-center items-center p-5 order-1 lg:order-2">
-              <div className="relative">
-                <div className="w-[240px] h-[240px] lg:w-60 lg:h-60 bg-gray-400 absolute lg:left-8 lg:top-8 top-[1.4rem] left-[-25px]"></div>
-                <div className="w-60 h-60 relative">
+            <div
+              className="col-span-12 lg:col-span-6 flex justify-center items-center p-5 order-1 lg:order-2"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
+              <div className="relative group">
+                <div className="w-[240px] h-[240px] lg:w-60 lg:h-60 bg-gray-400 absolute lg:left-8 lg:top-8 top-[1.4rem] left-[-25px] transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2"></div>
+                <div className="w-60 h-60 relative overflow-hidden z-10 rounded-sm">
                   <Image
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                     src="/img/profile.jpg"
                     alt="Profile"
                     width={240}
@@ -271,7 +318,7 @@ export default function Home() {
       </div>
       <div id="about" className="w-full bg-gray-50">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex justify-center">
+          <div className="flex justify-center" data-aos="fade-up">
             <button
               className="bg-gray-200 text-black py-1 px-6 rounded-xl"
               disabled
@@ -281,12 +328,16 @@ export default function Home() {
           </div>
           <div className="flex p-5 mt-10">
             <div className="grid grid-cols-12 gap-4">
-              <div className="col-span-12 lg:col-span-6 flex justify-center items-center p-5">
-                <div className="relative">
-                  <div className="w-[100%] h-[100%] bg-gray-400 absolute top-7 right-7"></div>
-                  <div className="w-[100%] h-[100%] relative">
+              <div
+                className="col-span-12 lg:col-span-6 flex justify-center items-center p-5"
+                data-aos="fade-right"
+                data-aos-duration="800"
+              >
+                <div className="relative group">
+                  <div className="w-[100%] h-[100%] bg-gray-400 absolute top-7 right-7 transition-transform duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2"></div>
+                  <div className="w-[100%] h-[100%] relative overflow-hidden z-10 rounded-sm">
                     <Image
-                      className="object-cover w-full h-full"
+                      className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
                       src="/img/profile2.jpg"
                       alt="Profile"
                       width={240}
@@ -296,7 +347,11 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-12 lg:col-span-6 p-5">
+              <div
+                className="col-span-12 lg:col-span-6 p-5"
+                data-aos="fade-left"
+                data-aos-duration="800"
+              >
                 <div className="text-2xl font-bold">
                   Curious about me? Here you have it:
                 </div>
@@ -358,7 +413,7 @@ export default function Home() {
       </div>
       <div className="w-full bg-gray-50">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex justify-center">
+          <div className="flex justify-center" data-aos="fade-up">
             <button
               className="bg-gray-200 text-black py-1 px-6 rounded-xl"
               disabled
@@ -371,8 +426,12 @@ export default function Home() {
               The skills, tools and technologies I am really good at:
             </div>
           </div>
-          <ul className="grid grid-cols-3 gap-4 sm:grid-cols-8 mt-10">
-            <li className="text-center p-2">
+          <ul
+            className="grid grid-cols-3 gap-4 sm:grid-cols-8 mt-10"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -385,7 +444,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">Javascript</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -398,7 +457,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">Typescript</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -411,7 +470,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">React</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -424,7 +483,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">Next JS</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -437,7 +496,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">Git</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -450,7 +509,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">Laravel</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -463,7 +522,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">Tailwind CSS</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -476,7 +535,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">CSS</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -489,7 +548,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">Angular</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -502,7 +561,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">Bootstrap</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -515,7 +574,7 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">HTML</div>
             </li>
-            <li className="text-center p-2">
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
               <div className="flex justify-center">
                 <Image
                   className="object-cover w-2/5"
@@ -533,7 +592,7 @@ export default function Home() {
       </div>
       <div className="w-full bg-gray-50">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex justify-center">
+          <div className="flex justify-center" data-aos="fade-up">
             <button
               className="bg-gray-200 text-black py-1 px-6 rounded-xl"
               disabled
@@ -541,14 +600,18 @@ export default function Home() {
               Experience
             </button>
           </div>
-          <div className="w-full">
+          <div className="w-full" data-aos="fade-up" data-aos-delay="100">
             <div className="text-lg text-center mt-5 text-gray-400">
               Here is a quick summary of my most recent experiences:
             </div>
           </div>
           <div className="container mx-auto mt-10">
             <div className="grid grid-cols-12">
-              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10">
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
                 <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
                     src="/icon/awh.png"
@@ -589,7 +652,11 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
                 <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
                     src="/icon/vaganza.jpg"
@@ -632,7 +699,11 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10">
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
                 <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
                     src="/icon/diskominfo.jpg"
@@ -670,7 +741,7 @@ export default function Home() {
       </div>
       <div id="work" className="w-full bg-gray-50">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex justify-center">
+          <div className="flex justify-center" data-aos="fade-up">
             <button
               className="bg-gray-200 text-black py-1 px-6 rounded-xl"
               disabled
@@ -678,14 +749,18 @@ export default function Home() {
               Work
             </button>
           </div>
-          <div className="w-full">
+          <div className="w-full" data-aos="fade-up" data-aos-delay="100">
             <div className="text-lg text-center mt-5 text-gray-400">
               Some of the noteworthy projects i have built:
             </div>
           </div>
           <div className="container mx-auto mt-10">
             <div className="grid grid-cols-12">
-              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10">
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
                 <div className="col-span-12 lg:col-span-6">
                   <div className="flex justify-center">
                     <Image
@@ -694,7 +769,7 @@ export default function Home() {
                       height={500}
                       width={500}
                       quality={100}
-                      className="rounded-[15px]"
+                      className="rounded-[15px] group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                 </div>
@@ -711,19 +786,19 @@ export default function Home() {
                     performance and user experience
                   </div>
                   <div className="mt-5 flex flex-wrap aligns-center gap-2">
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       AngularJS
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Typescript
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Tailwindcss
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Axios
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Integrate REST API
                     </div>
                   </div>
@@ -732,7 +807,11 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
                 <div className="col-span-12 lg:col-span-6 order-2 lg:order-1">
                   <div className="text-lg">Photobooth Landing Page</div>
                   <div className="text-md mt-5">
@@ -748,25 +827,25 @@ export default function Home() {
                     experience.
                   </div>
                   <div className="mt-5 flex flex-wrap aligns-center gap-2">
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       PHP
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Ajax
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       CodeIgniter 3
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Bootstrap 4
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       CSS
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       REST API
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Blade Templating
                     </div>
                   </div>
@@ -782,12 +861,12 @@ export default function Home() {
                       height={500}
                       width={500}
                       quality={100}
-                      className="rounded-[15px]"
+                      className="rounded-[15px] group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                 </div>
               </div>
-              {/* <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10">
+              {/* <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
                 <div className="col-span-12 lg:col-span-6">
                   <div className="flex justify-center">
                     <Image
@@ -808,34 +887,34 @@ export default function Home() {
                     posuere cubilia curae.
                   </div>
                   <div className="mt-5 flex flex-wrap aligns-center gap-2">
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       React
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Next.js
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Typescript
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Nest.js
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       PostgreSQL
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Tailwindcss
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Figma
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Cypress
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Storybook
                     </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Git
                     </div>
                   </div>
@@ -940,7 +1019,7 @@ export default function Home() {
       </div> */}
       <div id="contact" className="w-full bg-gray-50 pb-10">
         <div className="container mx-auto px-4 py-8">
-          <div className="flex justify-center">
+          <div className="flex justify-center" data-aos="fade-up">
             <button
               className="bg-gray-200 text-black py-1 px-6 rounded-xl"
               disabled
@@ -948,31 +1027,31 @@ export default function Home() {
               Get In Touch
             </button>
           </div>
-          <div className="w-full">
+          <div className="w-full" data-aos="fade-up" data-aos-delay="100">
             <div className="text-lg text-center mt-5 text-gray-400">
               What’s next? Feel free to reach out to me if youre looking for
               <br /> a Frontend Developer, have a query, or simply want to
               connect.
             </div>
           </div>
-          <div className="w-full mt-10">
+          <div className="w-full mt-10" data-aos="fade-up" data-aos-delay="200">
             <div className="flex justify-center items-center gap-5">
               <a href="mailto:ranggaputra681@gmail.com" title="Send Email">
                 <AiOutlineMail
                   size={24}
-                  className="text-gray-400 hover:text-black transition-colors"
+                  className="text-gray-400 hover:text-black dark:hover:text-white hover:-translate-y-1 hover:scale-110 transition-all duration-300"
                 />
               </a>
               <a
                 href="mailto:ranggaputra681@gmail.com"
-                className="text-lg lg:text-2xl font-bold hover:underline transition-all"
+                className="text-lg lg:text-2xl font-bold hover:underline hover:text-gray-500 transition-all"
               >
                 ranggaputra681@gmail.com
               </a>
               <button
                 onClick={() => handleCopy("ranggaputra681@gmail.com", "email")}
                 title="Copy email"
-                className="relative"
+                className="relative group hover:scale-110 transition-transform"
               >
                 {copiedEmail ? (
                   <span className="text-sm text-green-500 font-medium">
@@ -981,13 +1060,13 @@ export default function Home() {
                 ) : (
                   <FaRegCopy
                     size={24}
-                    className="text-gray-400 hover:text-black transition-colors cursor-pointer"
+                    className="text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors cursor-pointer"
                   />
                 )}
               </button>
             </div>
           </div>
-          <div className="w-full mt-10">
+          <div className="w-full mt-10" data-aos="fade-up" data-aos-delay="300">
             <div className="flex justify-center items-center gap-5">
               <a
                 href="https://wa.me/6281383585869"
@@ -997,21 +1076,21 @@ export default function Home() {
               >
                 <FiPhone
                   size={24}
-                  className="text-gray-400 hover:text-black transition-colors"
+                  className="text-gray-400 hover:text-black dark:hover:text-white hover:-translate-y-1 hover:scale-110 transition-all duration-300"
                 />
               </a>
               <a
                 href="https://wa.me/6281383585869"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lg lg:text-2xl font-bold hover:underline transition-all"
+                className="text-lg lg:text-2xl font-bold hover:underline hover:text-gray-500 transition-all"
               >
                 +62 813 8358 5869
               </a>
               <button
                 onClick={() => handleCopy("+62 813 8358 5869", "phone")}
                 title="Copy phone number"
-                className="relative"
+                className="relative group hover:scale-110 transition-transform"
               >
                 {copiedPhone ? (
                   <span className="text-sm text-green-500 font-medium">
@@ -1020,24 +1099,24 @@ export default function Home() {
                 ) : (
                   <FaRegCopy
                     size={24}
-                    className="text-gray-400 hover:text-black transition-colors cursor-pointer"
+                    className="text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors cursor-pointer"
                   />
                 )}
               </button>
             </div>
           </div>
-          <div className="w-full mt-10">
+          <div className="w-full mt-10" data-aos="fade-up" data-aos-delay="400">
             <div className="text-lg text-center text-gray-400">
               You may also find me on these platforms!
             </div>
           </div>
-          <div className="w-full mt-3">
+          <div className="w-full mt-3" data-aos="fade-up" data-aos-delay="500">
             <div className="flex justify-center items-center gap-3">
               <a
                 href="https://github.com/rangga48"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-black transition-colors"
+                className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:-translate-y-1 hover:scale-110 transition-all duration-300"
               >
                 <Github size={20} />
               </a>
@@ -1045,7 +1124,7 @@ export default function Home() {
                 href="https://www.instagram.com/mweh.48/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-black transition-colors"
+                className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:-translate-y-1 hover:scale-110 transition-all duration-300"
               >
                 <Instagram size={20} />
               </a>
@@ -1053,7 +1132,7 @@ export default function Home() {
                 href="https://www.linkedin.com/in/rangga-putra/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-black transition-colors"
+                className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white hover:-translate-y-1 hover:scale-110 transition-all duration-300"
               >
                 <Linkedin size={20} />
               </a>
