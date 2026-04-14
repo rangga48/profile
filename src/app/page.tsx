@@ -925,6 +925,56 @@ export default function Home() {
                   </div>
                 </div>
               </div>
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <div className="col-span-12 lg:col-span-6">
+                  <div className="flex justify-center">
+                    <Image
+                      src="/img/undangan.png"
+                      alt=""
+                      height={500}
+                      width={500}
+                      quality={100}
+                      className="rounded-[15px] group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-12 lg:col-span-6">
+                  <div className="text-lg">Undangan</div>
+                  <div className="text-md mt-5">
+                    {dict[lang].work.visidea.desc}
+                  </div>
+                  <div className="mt-5 flex flex-wrap aligns-center gap-2">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      PHP
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Ajax
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      CodeIgniter 3
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Bootstrap 4
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      CSS
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      REST API
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Blade Templating
+                    </div>
+                  </div>
+                  {/* <div className="mt-5">
+                    <CiShare1 size={32} />
+                  </div> */}
+                </div>
+              </div>
               {/* <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
                 <div className="col-span-12 lg:col-span-6">
                   <div className="flex justify-center">
