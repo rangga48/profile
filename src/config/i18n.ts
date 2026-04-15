@@ -69,6 +69,9 @@ export const dict = {
       },
       photobooth: {
         desc: "Developed a photobooth landing page using CodeIgniter 3, PHP, Blade templating, Ajax and Bootstrap 4. Integrated RESTful APIs for dynamic data management and implemented an interactive map using Leaflet to visualize multiple photobooth locations. Designed and implemented a CMS-driven system, enabling full control of content, location points, and other data through an admin dashboard without requiring code changes. Also handled API integration, data rendering, and UI responsiveness to ensure optimal performance and user experience."
+      },
+      undangan: {
+        desc: "Developed a digital invitation platform using CodeIgniter 3, PHP, Blade templating, Ajax, and Bootstrap 4. Created and implemented more than 15 customizable invitation themes for weddings, events, and birthdays, focusing on modern, responsive, and user-friendly designs. Integrated RESTful APIs to support dynamic content management and real-time data handling. Built a CMS-driven system that allows administrators to easily manage invitation content, themes, and event details through an intuitive dashboard without requiring code changes. Also handled API integration, data rendering, and UI responsiveness to ensure optimal performance and a seamless user experience across devices."
       }
     },
     contact: {
@@ -148,7 +151,11 @@ export const dict = {
       },
       photobooth: {
         desc: "Mengembangkan halaman arahan photobooth menggunakan CodeIgniter 3, PHP, blade templating, Ajax, dan Bootstrap 4. Mengintegrasikan RESTful API untuk pengelolaan data dinamis dan mengimplementasikan peta interaktif menggunakan Leaflet untuk memvisualisasikan beberapa lokasi photobooth. Merancang dan mengimplementasikan sistem berbasis CMS, memungkinkan kontrol penuh atas konten, titik lokasi, dan data lainnya melalui dasbor admin tanpa memerlukan perubahan kode. Juga menangani integrasi API, rendering data, dan responsivitas UI untuk memastikan performa dan pengalaman pengguna yang optimal."
+      },
+      undangan: {
+        desc: "Mengembangkan platform undangan digital menggunakan CodeIgniter 3, PHP, Blade templating, Ajax, dan Bootstrap 4. Membuat dan mengimplementasikan lebih dari 15 tema undangan yang dapat dikustomisasi untuk pernikahan, acara, dan ulang tahun dengan fokus pada desain modern, responsif, dan mudah digunakan. Mengintegrasikan RESTful API untuk mendukung pengelolaan konten dinamis dan pemrosesan data secara real-time. Membangun sistem berbasis CMS yang memungkinkan admin mengelola konten undangan, tema, dan detail acara melalui dashboard yang intuitif tanpa perlu melakukan perubahan kode. Juga menangani integrasi API, rendering data, serta memastikan responsivitas UI untuk memberikan performa optimal dan pengalaman pengguna yang seamless di berbagai perangkat."
       }
+
     },
     contact: {
       title: "Hubungi Saya",

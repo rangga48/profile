@@ -945,7 +945,7 @@ export default function Home() {
                 <div className="col-span-12 lg:col-span-6">
                   <div className="text-lg">Undangan</div>
                   <div className="text-md mt-5">
-                    {dict[lang].work.visidea.desc}
+                    {dict[lang].work.undangan.desc}
                   </div>
                   <div className="mt-5 flex flex-wrap aligns-center gap-2">
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
