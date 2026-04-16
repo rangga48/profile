@@ -699,7 +699,7 @@ export default function Home() {
               >
                 <div className="flex flex-col md:flex-row justify-between items-start">
                   <Image
-                    src="/icon/awh.png"
+                    src={isDark ? "/icon/logo_awh.png" : "/icon/awh.png"}
                     alt="Upwork Logo"
                     width={100}
                     height={100}
@@ -870,9 +870,11 @@ export default function Home() {
                       Integrate REST API
                     </div>
                   </div>
-                  {/* <div className="mt-5">
-                    <CiShare1 size={32} />
-                  </div> */}
+                  <div className="mt-5">
+                    <a href="https://visideastudio.id">
+                      <CiShare1 size={32} />
+                    </a>
+                  </div>
                 </div>
               </div>
               <div
@@ -908,9 +910,11 @@ export default function Home() {
                       Blade Templating
                     </div>
                   </div>
-                  {/* <div className="mt-5">
-                    <CiShare1 size={32} />
-                  </div> */}
+                  <div className="mt-5">
+                    <a href="https://photobooth.awh.co.id">
+                      <CiShare1 size={32} />
+                    </a>
+                  </div>
                 </div>
                 <div className="col-span-12 lg:col-span-6 order-1 lg:order-2">
                   <div className="flex justify-center">
