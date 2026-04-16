@@ -66,7 +66,7 @@ export const dict = {
         ],
       },
       diskominfo: {
-        role: "IT Support",
+        role: "IT Support (Internship)",
         date: "Oct 2021 - Feb 2022",
         tasks: [
           "Assisted in debugging and maintaining PHP-based applications.",
@@ -183,7 +183,7 @@ export const dict = {
         ],
       },
       diskominfo: {
-        role: "IT Support",
+        role: "IT Support (Magang)",
         date: "Okt 2021 - Feb 2022",
         tasks: [
           "Membantu melakukan debug dan memelihara aplikasi berbasis PHP.",
