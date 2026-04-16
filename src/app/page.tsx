@@ -20,26 +20,39 @@ import { CV_CONFIG } from "@/config/cv";
 import { dict } from "@/config/i18n";
 
 const IndoFlag = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2" className="w-[18px] h-auto rounded-[2px] shadow-sm">
-    <rect width="3" height="2" fill="#fff"/>
-    <rect width="3" height="1" fill="#ce1126"/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 3 2"
+    className="w-[18px] h-auto rounded-[2px] shadow-sm"
+  >
+    <rect width="3" height="2" fill="#fff" />
+    <rect width="3" height="1" fill="#ce1126" />
   </svg>
 );
 
 const UKFlag = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-[18px] h-auto rounded-[2px] shadow-sm">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 60 30"
+    className="w-[18px] h-auto rounded-[2px] shadow-sm"
+  >
     <clipPath id="s">
-      <path d="M0,0 v30 h60 v-30 z"/>
+      <path d="M0,0 v30 h60 v-30 z" />
     </clipPath>
     <clipPath id="t">
-      <path d="M30,15 h30 v15 z v-15 h-30 z h-30 v-15 z v15 h30 z"/>
+      <path d="M30,15 h30 v15 z v-15 h-30 z h-30 v-15 z v15 h30 z" />
     </clipPath>
     <g clipPath="url(#s)">
-      <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
-      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/>
-      <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#t)" stroke="#C8102E" strokeWidth="4"/>
-      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10"/>
-      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6"/>
+      <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
+      <path
+        d="M0,0 L60,30 M60,0 L0,30"
+        clipPath="url(#t)"
+        stroke="#C8102E"
+        strokeWidth="4"
+      />
+      <path d="M30,0 v30 M0,15 h60" stroke="#fff" strokeWidth="10" />
+      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6" />
     </g>
   </svg>
 );
@@ -178,7 +191,9 @@ export default function Home() {
             <div className="flex items-center gap-x-2 text-lg">
               <button
                 onClick={toggleLanguage}
-                title={lang === "en" ? "Switch to Indonesian" : "Switch to English"}
+                title={
+                  lang === "en" ? "Switch to Indonesian" : "Switch to English"
+                }
                 className="h-8 px-2 flex items-center justify-center font-bold text-xs rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
               >
                 <div className="flex items-center gap-1.5">
@@ -189,7 +204,9 @@ export default function Home() {
               <div className="hover:scale-110 transition-transform duration-300">
                 <button
                   onClick={toggleDark}
-                  title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                  title={
+                    isDark ? "Switch to Light Mode" : "Switch to Dark Mode"
+                  }
                   className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
                 >
                   {isDark ? (
@@ -217,7 +234,9 @@ export default function Home() {
           <div className="flex lg:hidden items-center gap-x-3 relative z-50">
             <button
               onClick={toggleLanguage}
-              title={lang === "en" ? "Switch to Indonesian" : "Switch to English"}
+              title={
+                lang === "en" ? "Switch to Indonesian" : "Switch to English"
+              }
               className="h-9 px-2 flex items-center justify-center font-bold text-xs rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-110 transition-all duration-300"
             >
               <div className="flex items-center gap-1.5">
@@ -302,30 +321,36 @@ export default function Home() {
                       {dict[lang].nav.switchTheme}
                     </span>
                     <div className="flex items-center gap-x-2">
-                    <button
-                      onClick={toggleLanguage}
-                      title={lang === "en" ? "Switch to Indonesian" : "Switch to English"}
-                      className="px-2 py-1 flex items-center gap-1.5 flex-row rounded-full text-gray-800 dark:text-gray-200 transition-colors duration-200 font-bold"
-                    >
-                      {lang === "en" ? <UKFlag /> : <IndoFlag />}
-                      <span>{lang === "en" ? "EN" : "ID"}</span>
-                    </button>
-                    <button
-                      onClick={toggleDark}
-                      title={
-                        isDark ? "Switch to Light Mode" : "Switch to Dark Mode"
-                      }
-                      className="p-1 rounded-full text-gray-800 dark:text-gray-200 transition-colors duration-200"
-                    >
-                      {isDark ? (
-                        <Moon
-                          size={22}
-                          className="text-gray-700 dark:text-gray-300"
-                        />
-                      ) : (
-                        <Sun size={22} className="text-gray-500" />
-                      )}
-                    </button>
+                      <button
+                        onClick={toggleLanguage}
+                        title={
+                          lang === "en"
+                            ? "Switch to Indonesian"
+                            : "Switch to English"
+                        }
+                        className="px-2 py-1 flex items-center gap-1.5 flex-row rounded-full text-gray-800 dark:text-gray-200 transition-colors duration-200 font-bold"
+                      >
+                        {lang === "en" ? <UKFlag /> : <IndoFlag />}
+                        <span>{lang === "en" ? "EN" : "ID"}</span>
+                      </button>
+                      <button
+                        onClick={toggleDark}
+                        title={
+                          isDark
+                            ? "Switch to Light Mode"
+                            : "Switch to Dark Mode"
+                        }
+                        className="p-1 rounded-full text-gray-800 dark:text-gray-200 transition-colors duration-200"
+                      >
+                        {isDark ? (
+                          <Moon
+                            size={22}
+                            className="text-gray-700 dark:text-gray-300"
+                          />
+                        ) : (
+                          <Sun size={22} className="text-gray-500" />
+                        )}
+                      </button>
                     </div>
                   </div>
 
@@ -354,7 +379,11 @@ export default function Home() {
                 {dict[lang].hero.greeting}
               </div>
               <div className="text-lg mt-5 lg:mt-10 text-gray-400 md:leading-relaxed">
-                <span dangerouslySetInnerHTML={{ __html: `${dict[lang].hero.desc1} <br /><br /> ${dict[lang].hero.desc2}` }} />
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: `${dict[lang].hero.desc1} <br /><br /> ${dict[lang].hero.desc2}`,
+                  }}
+                />
               </div>
               <div className="mt-10">
                 <div className="text-lg flex items-center gap-x-4">
@@ -672,6 +701,32 @@ export default function Home() {
               </div>
               <div className="text-lg mt-1">PHP</div>
             </li>
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
+              <div className="flex justify-center">
+                <Image
+                  className="object-cover w-2/5"
+                  src="/icon/codeigniter.png"
+                  alt="Profile"
+                  width={100}
+                  height={100}
+                  quality={100}
+                />
+              </div>
+              <div className="text-lg mt-1">CodeIgniter3</div>
+            </li>
+            <li className="text-center p-2 hover:-translate-y-2 transition-transform duration-300 cursor-default">
+              <div className="flex justify-center">
+                <Image
+                  className="object-cover w-2/5"
+                  src="/icon/jquery.png"
+                  alt="Profile"
+                  width={100}
+                  height={100}
+                  quality={100}
+                />
+              </div>
+              <div className="text-lg mt-1">jQuery</div>
+            </li>
           </ul>
         </div>
       </div>
@@ -706,7 +761,9 @@ export default function Home() {
                     className="object-contain"
                   />
                   <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
-                    <h3 className="text-xl font-bold">{dict[lang].experience.awh.role}</h3>
+                    <h3 className="text-xl font-bold">
+                      {dict[lang].experience.awh.role}
+                    </h3>
                     <ul className="list-disc list-inside text-gray-400 mt-5">
                       <li className="text-base font-medium">
                         {dict[lang].experience.awh.tasks[0]}
@@ -789,7 +846,9 @@ export default function Home() {
                     className="object-contain"
                   />
                   <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
-                    <h3 className="text-xl font-bold">{dict[lang].experience.diskominfo.role}</h3>
+                    <h3 className="text-xl font-bold">
+                      {dict[lang].experience.diskominfo.role}
+                    </h3>
                     <ul className="list-disc list-inside text-gray-400 mt-5">
                       <li className="text-base font-medium">
                         {dict[lang].experience.diskominfo.tasks[0]}
@@ -909,6 +968,9 @@ export default function Home() {
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Blade Templating
                     </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      JavaScript
+                    </div>
                   </div>
                   <div className="mt-5">
                     <a href="https://photobooth.awh.co.id">
@@ -947,7 +1009,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="col-span-12 lg:col-span-6">
-                  <div className="text-lg">Undangan</div>
+                  <div className="text-lg">Undangan Digital</div>
                   <div className="text-md mt-5">
                     {dict[lang].work.undangan.desc}
                   </div>
@@ -973,69 +1035,318 @@ export default function Home() {
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Blade Templating
                     </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      JavaScript
+                    </div>
                   </div>
                   {/* <div className="mt-5">
                     <CiShare1 size={32} />
                   </div> */}
                 </div>
               </div>
-              {/* <div className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group">
-                <div className="col-span-12 lg:col-span-6">
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <div className="col-span-12 lg:col-span-6 order-2 lg:order-1">
+                  <div className="text-lg">Ticketing System</div>
+                  <div className="text-md mt-5">
+                    {dict[lang].work.ticketing.desc}
+                  </div>
+                  <div className="mt-5 flex flex-wrap aligns-center gap-2">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      PHP
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Ajax
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      CodeIgniter 3
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Bootstrap 4
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      CSS
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      REST API
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Blade Templating
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      JavaScript
+                    </div>
+                  </div>
+                  {/* <div className="mt-5">
+                    <a href="https://photobooth.awh.co.id">
+                      <CiShare1 size={32} />
+                    </a>
+                  </div> */}
+                </div>
+                <div className="col-span-12 lg:col-span-6 order-1 lg:order-2">
                   <div className="flex justify-center">
                     <Image
-                      src="/img/pic.png"
+                      src="/img/ticketing.png"
                       alt=""
                       height={500}
                       width={500}
                       quality={100}
+                      className="rounded-[15px] group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <div className="col-span-12 lg:col-span-6">
+                  <div className="flex justify-center">
+                    <Image
+                      src="/img/parking.png"
+                      alt=""
+                      height={500}
+                      width={500}
+                      quality={100}
+                      className="rounded-[15px] group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                 </div>
                 <div className="col-span-12 lg:col-span-6">
-                  <div className="text-lg">Fiskil</div>
+                  <div className="text-lg">Parking System</div>
                   <div className="text-md mt-5">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Maecenas nec urna ac tellus volutpat viverra. Vestibulum
-                    ante ipsum primis in faucibus orci luctus et ultrices
-                    posuere cubilia curae.
+                    {dict[lang].work.parking.desc}
                   </div>
                   <div className="mt-5 flex flex-wrap aligns-center gap-2">
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
-                      React
-                    </div>
-                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
-                      Next.js
+                      AngularJS
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Typescript
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
-                      Nest.js
+                      Tailwindcss
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
-                      PostgreSQL
+                      Axios
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Integrate REST API
+                    </div>
+                  </div>
+                  {/* <div className="mt-5">
+                    <CiShare1 size={32} />
+                  </div> */}
+                </div>
+              </div>
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <div className="col-span-12 lg:col-span-6 order-2 lg:order-1">
+                  <div className="text-lg">Editing Photobooth</div>
+                  <div className="text-md mt-5">
+                    {dict[lang].work.editphoto.desc}
+                  </div>
+                  <div className="mt-5 flex flex-wrap aligns-center gap-2">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      PHP
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Ajax
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      CodeIgniter 3
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Bootstrap 4
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      CSS
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      REST API
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Blade Templating
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      JavaScript
+                    </div>
+                  </div>
+                  {/* <div className="mt-5">
+                    <a href="https://photobooth.awh.co.id">
+                      <CiShare1 size={32} />
+                    </a>
+                  </div> */}
+                </div>
+                <div className="col-span-12 lg:col-span-6 order-1 lg:order-2">
+                  <div className="flex justify-center">
+                    <Image
+                      src="/img/editphotobooth.png"
+                      alt=""
+                      height={500}
+                      width={500}
+                      quality={100}
+                      className="rounded-[15px] group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <div className="col-span-12 lg:col-span-6">
+                  <div className="flex justify-center">
+                    <Image
+                      src="/img/findjob.png"
+                      alt=""
+                      height={500}
+                      width={500}
+                      quality={100}
+                      className="rounded-[15px] group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-12 lg:col-span-6">
+                  <div className="text-lg">Slicing Find Job</div>
+                  <div className="text-md mt-5">
+                    {dict[lang].work.findjob.desc}
+                  </div>
+                  <div className="mt-5 flex flex-wrap aligns-center gap-2">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      NextJS
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      ReactJS
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Typescript
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
                       Tailwindcss
                     </div>
+                  </div>
+                  {/* <div className="mt-5">
+                    <CiShare1 size={32} />
+                  </div> */}
+                </div>
+              </div>
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <div className="col-span-12 lg:col-span-6 order-2 lg:order-1">
+                  <div className="text-lg">Monitoring Photobooth</div>
+                  <div className="text-md mt-5">
+                    {dict[lang].work.monitoring.desc}
+                  </div>
+                  <div className="mt-5 flex flex-wrap aligns-center gap-2">
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
-                      Figma
+                      PHP
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
-                      Cypress
+                      Ajax
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
-                      Storybook
+                      CodeIgniter 3
                     </div>
                     <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
-                      Git
+                      Bootstrap 4
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      CSS
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      REST API
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Blade Templating
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      JavaScript
                     </div>
                   </div>
-                  <div className="mt-5">
-                    <CiShare1 size={32} />
+                  {/* <div className="mt-5">
+                    <a href="https://photobooth.awh.co.id">
+                      <CiShare1 size={32} />
+                    </a>
+                  </div> */}
+                </div>
+                <div className="col-span-12 lg:col-span-6 order-1 lg:order-2">
+                  <div className="flex justify-center">
+                    <Image
+                      src="/img/monitoring.png"
+                      alt=""
+                      height={500}
+                      width={500}
+                      quality={100}
+                      className="rounded-[15px] group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
                 </div>
-              </div> */}
+              </div>
+              <div
+                className="col-span-12 bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-12 gap-4 p-10 mt-10 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <div className="col-span-12 lg:col-span-6">
+                  <div className="flex justify-center">
+                    <Image
+                      src="/img/smart-ticketing.png"
+                      alt=""
+                      height={500}
+                      width={500}
+                      quality={100}
+                      className="rounded-[15px] group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
+                <div className="col-span-12 lg:col-span-6">
+                  <div className="text-lg">Smart Ticketing</div>
+                  <div className="text-md mt-5">
+                    {dict[lang].work.smartticket.desc}
+                  </div>
+                  <div className="mt-5 flex flex-wrap aligns-center gap-2">
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      PHP
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Laravel
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Ajax
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      Bootstrap 4
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      CSS
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      REST API
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      MQTT
+                    </div>
+                    <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+                      JavaScript
+                    </div>
+                  </div>
+                  {/* <div className="mt-5">
+                    <CiShare1 size={32} />
+                  </div> */}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1142,7 +1453,11 @@ export default function Home() {
           </div>
           <div className="w-full" data-aos="fade-up" data-aos-delay="100">
             <div className="text-lg text-center mt-5 text-gray-400">
-              <span dangerouslySetInnerHTML={{ __html: dict[lang].contact.subtitle }} />
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: dict[lang].contact.subtitle,
+                }}
+              />
             </div>
           </div>
           <div className="w-full mt-10" data-aos="fade-up" data-aos-delay="200">
