@@ -106,6 +106,9 @@ export const dict = {
       smartticket: {
         desc: "Developed a smart ticketing system using Laravel, PHP, Bootstrap 4, MQTT, and AJAX JavaScript. Built and deployed multiple online ticket booking platforms for various events, including anniversaries, running events, and concerts. Integrated Xendit payment gateway and utilized MQTT for real-time payment notifications, enabling the system to instantly detect and process successful transactions. Implemented event-driven architecture to ensure seamless ticket validation and status updates after payment confirmation. Also handled API integration, dynamic data processing, and system optimization to ensure reliability, scalability, and a smooth booking experience.",
       },
+      kse: {
+        desc: "Developed a donation management system for KSE using Laravel with a fullstack monolithic architecture, Bootstrap 4, and JavaScript. Built a centralized platform to handle donation submissions, data management, and reporting within a single integrated system. Designed responsive and user-friendly interfaces to simplify the donation process and improve accessibility for users. Also implemented efficient data processing, form handling, and system optimization to ensure reliability and smooth performance across the application.",
+      },
     },
     contact: {
       title: "Get In Touch",
@@ -222,6 +225,9 @@ export const dict = {
       },
       smartticket: {
         desc: "Mengembangkan sistem smart ticketing menggunakan Laravel, PHP, Bootstrap 4, MQTT, dan AJAX JavaScript. Membangun dan mengimplementasikan beberapa platform pemesanan tiket online untuk berbagai jenis acara seperti anniversary, event lari, dan konser. Mengintegrasikan payment gateway Xendit serta memanfaatkan MQTT untuk notifikasi pembayaran secara real-time, sehingga sistem dapat langsung mendeteksi dan memproses transaksi yang berhasil. Menerapkan arsitektur berbasis event untuk memastikan validasi tiket dan pembaruan status berjalan otomatis setelah pembayaran dikonfirmasi. Juga menangani integrasi API, pengolahan data dinamis, serta optimasi sistem untuk memastikan keandalan, skalabilitas, dan pengalaman pemesanan yang lancar.",
+      },
+      kse: {
+        desc: "Mengembangkan sistem donasi KSE menggunakan Laravel dengan arsitektur fullstack monolith, Bootstrap 4, dan JavaScript. Membangun platform terpusat untuk mengelola proses donasi, pengolahan data, serta pelaporan dalam satu sistem yang terintegrasi. Mendesain antarmuka yang responsif dan mudah digunakan untuk mempermudah proses donasi serta meningkatkan aksesibilitas pengguna. Juga mengimplementasikan pengolahan data yang efisien, penanganan form, serta optimasi sistem untuk memastikan performa yang stabil dan andal.",
       },
     },
     contact: {
