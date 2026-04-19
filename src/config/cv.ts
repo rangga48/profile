@@ -10,7 +10,7 @@
  */
 export const CV_CONFIG = {
   /** Nama file CV di folder /public/cv/ */
-  file: "cv.pdf",
+  file: "Rangga_Putra_CV.pdf",
 
   /** Nama file saat didownload oleh pengguna */
   downloadAs: "Rangga_Putra_CV.pdf",
