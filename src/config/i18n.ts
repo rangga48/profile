@@ -44,9 +44,9 @@ export const dict = {
       subtitle: "Here is a quick summary of my most recent experiences:",
       awh: {
         role: "Frontend Developer",
-        date: "Jan 2024 - Present",
+        date: "Jan 2024 - April 2026",
         tasks: [
-          "Develop and maintain web applications using Angular and TypeScript .",
+          "Develop and maintain responsive and scalable web applications",
           "Manage multiple projects simultaneously (up to 9 active products).",
           "Implement new features based on business and user requirements .",
           "Perform bug fixing and optimize application performance.",
@@ -164,9 +164,9 @@ export const dict = {
         "Berikut adalah ringkasan singkat dari pengalaman terbaru saya:",
       awh: {
         role: "Frontend Developer",
-        date: "Jan 2024 - Sekarang",
+        date: "Jan 2024 - April 2026",
         tasks: [
-          "Membangun dan memelihara aplikasi web menggunakan Angular dan TypeScript .",
+          "Mengembangkan dan memelihara aplikasi web yang responsif dan skalabel.",
           "Mengelola beberapa proyek secara bersamaan (hingga 9 produk aktif).",
           "Mengimplementasikan fitur baru berdasarkan kebutuhan bisnis dan pengguna .",
           "Memperbaiki bug dan mengoptimalkan performa aplikasi.",
