@@ -126,10 +126,7 @@ const PageLayout = ({
       />
 
       {/* Skills */}
-      <SkillsSection
-        title={t.skills.title}
-        subtitle={t.skills.subtitle}
-      />
+      <SkillsSection title={t.skills.title} subtitle={t.skills.subtitle} />
 
       {/* Experience */}
       <ExperienceSection
