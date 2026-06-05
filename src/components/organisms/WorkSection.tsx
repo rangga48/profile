@@ -1,5 +1,6 @@
 import SectionBadge from "@/components/atoms/SectionBadge";
 import ProjectCard from "@/components/molecules/ProjectCard";
+import { motion } from "motion/react";
 
 interface WorkSectionProps {
   title: string;
@@ -105,32 +106,45 @@ const WorkSection = ({ title, subtitle, work }: WorkSectionProps) => {
     },
   ];
 
+  const duplicatedProjects = [...projects, ...projects];
+
   return (
-    <div id="work" className="w-full bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
+    <div id="work" className="w-full bg-gray-50 py-12">
+      <div className="container mx-auto px-4">
         <SectionBadge label={title} />
 
         <div className="w-full" data-aos="fade-up" data-aos-delay="100">
           <div className="text-lg text-center mt-5 text-gray-400">{subtitle}</div>
         </div>
+      </div>
 
-        <div className="container mx-auto mt-10">
-          <div className="grid grid-cols-12">
-            {projects.map((project, i) => (
-              <ProjectCard
-                key={i}
-                title={project.title}
-                desc={project.desc}
-                imageSrc={project.imageSrc}
-                techStack={project.techStack}
-                href={project.href}
-                reversed={project.reversed}
-                aosDelay={project.aosDelay}
-                topMargin={i > 0}
-              />
-            ))}
-          </div>
-        </div>
+      <div className="relative w-full mt-10 overflow-hidden">
+        {/* Transparent gradient masks for fading edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-gray-50 to-transparent dark:from-[#1f2937] dark:to-transparent pointer-events-none z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-gray-50 to-transparent dark:from-[#1f2937] dark:to-transparent pointer-events-none z-10" />
+
+        {/* Marquee slider track scrolling to the right (left-to-right visual motion) */}
+        <motion.div
+          className="flex gap-6 w-max animate-marquee-right hover:[animation-play-state:paused] py-4 px-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          {duplicatedProjects.map((project, i) => (
+            <ProjectCard
+              key={`${project.title}-${i}`}
+              title={project.title}
+              desc={project.desc}
+              imageSrc={project.imageSrc}
+              techStack={project.techStack}
+              href={project.href}
+              reversed={project.reversed}
+              disableAos={true}
+              topMargin={false}
+              className="w-[85vw] sm:w-[500px] md:w-[600px] lg:w-[700px] shrink-0"
+            />
+          ))}
+        </motion.div>
       </div>
     </div>
   );
