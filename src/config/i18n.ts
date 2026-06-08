@@ -82,33 +82,43 @@ export const dict = {
       title: "Work",
       subtitle: "Some of the noteworthy projects i have built:",
       visidea: {
+        category: "Company Profile",
         desc: "Developed a responsive and interactive landing page for Visidea Studio using Angular, TypeScript, and Tailwind CSS. Integrated RESTful APIs for dynamic data handling and implemented a CMS-based architecture, enabling administrators to easily manage and update all landing page content without code changes. Also handled API integration, state management, and content rendering to ensure optimal performance and user experience",
       },
       photobooth: {
+        category: "Landing Page",
         desc: "Developed a photobooth landing page using CodeIgniter 3, PHP, Blade templating, Ajax and Bootstrap 4. Integrated RESTful APIs for dynamic data management and implemented an interactive map using Leaflet to visualize multiple photobooth locations. Designed and implemented a CMS-driven system, enabling full control of content, location points, and other data through an admin dashboard without requiring code changes. Also handled API integration, data rendering, and UI responsiveness to ensure optimal performance and user experience.",
       },
       undangan: {
+        category: "Digital Invitation",
         desc: "Developed a digital invitation platform using CodeIgniter 3, PHP, Blade templating, Ajax, and Bootstrap 4. Created and implemented more than 15 customizable invitation themes for weddings, events, and birthdays, focusing on modern, responsive, and user-friendly designs. Integrated RESTful APIs to support dynamic content management and real-time data handling. Built a CMS-driven system that allows administrators to easily manage invitation content, themes, and event details through an intuitive dashboard without requiring code changes. Also handled API integration, data rendering, and UI responsiveness to ensure optimal performance and a seamless user experience across devices.",
       },
       ticketing: {
+        category: "Transaction System",
         desc: "Developed a comprehensive ticketing system for transaction recording at Dusun Bambu using PHP, CodeIgniter 3, AJAX, Blade templating, Bootstrap 4, and CSS. Implemented RESTful API integration for efficient data exchange and real-time updates. Built a structured and scalable system to manage all transaction records, ensuring accurate data processing and reporting. Also handled API integration, dynamic data rendering, and system optimization to deliver a reliable and user-friendly experience for operational needs.",
       },
       parking: {
+        category: "Parking Dashboard",
         desc: "Developed a parking management system for Dusun Bambu using Angular, TypeScript, Axios, and Tailwind CSS. Integrated RESTful APIs to handle real-time parking data recording and monitoring. Built an interactive and responsive interface to manage vehicle entry and exit efficiently, ensuring accurate tracking of parking activities. Also handled API integration, data synchronization, and dynamic content rendering to deliver a reliable and seamless user experience.",
       },
       editphoto: {
+        category: "Interactive Editor",
         desc: "Developed an interactive photobooth editing system for Selkachi using PHP, CodeIgniter 3, AJAX, Bootstrap 4, CSS, JavaScript, Blade templating, and RESTful APIs. Built a dynamic editing interface that allows users to drag and drop photos into predefined frames and freely adjust their position, scale, and layout using touch gestures. Implemented smooth user interactions and real-time rendering to ensure an intuitive and seamless editing experience. Also handled API integration, client-side interactivity, and performance optimization for responsive and efficient usage across devices.",
       },
       monitoring: {
+        category: "Monitoring System",
         desc: "Developed a real-time photo monitoring system using PHP, CodeIgniter 3, JavaScript, MQTT, Bootstrap 4, and CSS. Implemented MQTT protocol to enable instant data streaming, allowing captured photos to be displayed live as users complete their photobooth sessions. Built a responsive interface to monitor incoming photo results efficiently, ensuring smooth and real-time visualization. Also handled system integration, event-driven data updates, and performance optimization to deliver a fast and reliable live monitoring experience.",
       },
       findjob: {
+        category: "Frontend Slicing",
         desc: "Developed a frontend project by slicing Figma designs into a fully functional web interface using Next.js, TypeScript, and Tailwind CSS. Translated design components into responsive and reusable UI elements while maintaining pixel-perfect accuracy. Focused on improving skills in layout structuring, component-based architecture, and responsive design implementation. Also ensured clean code practices and optimized performance for a smooth and consistent user experience across different devices.",
       },
       smartticket: {
+        category: "Smart Ticketing",
         desc: "Developed a smart ticketing system using Laravel, PHP, Bootstrap 4, MQTT, and AJAX JavaScript. Built and deployed multiple online ticket booking platforms for various events, including anniversaries, running events, and concerts. Integrated Xendit payment gateway and utilized MQTT for real-time payment notifications, enabling the system to instantly detect and process successful transactions. Implemented event-driven architecture to ensure seamless ticket validation and status updates after payment confirmation. Also handled API integration, dynamic data processing, and system optimization to ensure reliability, scalability, and a smooth booking experience.",
       },
       kse: {
+        category: "Donation Platform",
         desc: "Developed a donation management system for KSE using Laravel with a fullstack monolithic architecture, Bootstrap 4, and JavaScript. Built a centralized platform to handle donation submissions, data management, and reporting within a single integrated system. Designed responsive and user-friendly interfaces to simplify the donation process and improve accessibility for users. Also implemented efficient data processing, form handling, and system optimization to ensure reliability and smooth performance across the application.",
       },
     },
@@ -204,33 +214,43 @@ export const dict = {
       title: "Pekerjaan",
       subtitle: "Beberapa proyek penting yang pernah saya bangun:",
       visidea: {
+        category: "Profil Perusahaan",
         desc: "Membangun halaman arahan (landing page) yang responsif dan interaktif untuk Visidea Studio menggunakan Angular, TypeScript, dan Tailwind CSS. Mengintegrasikan RESTful API untuk penanganan data dinamis dan mengimplementasikan arsitektur berbasis CMS, yang memungkinkan administrator mengelola dan memperbarui seluruh konten halaman arahan dengan mudah tanpa mengubah kode. Juga menangani integrasi API, state management, dan rendering konten untuk memastikan performa dan pengalaman pengguna yang optimal.",
       },
       photobooth: {
+        category: "Halaman Arahan",
         desc: "Mengembangkan halaman arahan photobooth menggunakan CodeIgniter 3, PHP, blade templating, Ajax, dan Bootstrap 4. Mengintegrasikan RESTful API untuk pengelolaan data dinamis dan mengimplementasikan peta interaktif menggunakan Leaflet untuk memvisualisasikan beberapa lokasi photobooth. Merancang dan mengimplementasikan sistem berbasis CMS, memungkinkan kontrol penuh atas konten, titik lokasi, dan data lainnya melalui dasbor admin tanpa memerlukan perubahan kode. Juga menangani integrasi API, rendering data, dan responsivitas UI untuk memastikan performa dan pengalaman pengguna yang optimal.",
       },
       undangan: {
+        category: "Undangan Digital",
         desc: "Mengembangkan platform undangan digital menggunakan CodeIgniter 3, PHP, Blade templating, Ajax, dan Bootstrap 4. Membuat dan mengimplementasikan lebih dari 15 tema undangan yang dapat dikustomisasi untuk pernikahan, acara, dan ulang tahun dengan fokus pada desain modern, responsif, dan mudah digunakan. Mengintegrasikan RESTful API untuk mendukung pengelolaan konten dinamis dan pemrosesan data secara real-time. Membangun sistem berbasis CMS yang memungkinkan admin mengelola konten undangan, tema, dan detail acara melalui dashboard yang intuitif tanpa perlu melakukan perubahan kode. Juga menangani integrasi API, rendering data, serta memastikan responsivitas UI untuk memberikan performa optimal dan pengalaman pengguna yang seamless di berbagai perangkat.",
       },
       ticketing: {
+        category: "Sistem Tiket",
         desc: "Mengembangkan sistem ticketing untuk pencatatan seluruh transaksi di Dusun Bambu menggunakan PHP, CodeIgniter 3, AJAX, Blade templating, Bootstrap 4, dan CSS. Mengintegrasikan RESTful API untuk pertukaran data yang efisien serta pembaruan secara real-time. Membangun sistem yang terstruktur dan scalable untuk mengelola seluruh data transaksi, memastikan proses pencatatan dan pelaporan berjalan dengan akurat. Juga menangani integrasi API, rendering data dinamis, serta optimasi sistem untuk memberikan pengalaman yang andal dan mudah digunakan sesuai kebutuhan operasional.",
       },
       parking: {
+        category: "Sistem Parkir",
         desc: "Mengembangkan sistem manajemen parkir untuk Dusun Bambu menggunakan Angular, TypeScript, Axios, dan Tailwind CSS. Mengintegrasikan RESTful API untuk pencatatan dan monitoring data parkir secara real-time. Membangun antarmuka yang interaktif dan responsif untuk mengelola keluar-masuk kendaraan secara efisien, sehingga memastikan pencatatan aktivitas parkir yang akurat. Juga menangani integrasi API, sinkronisasi data, serta rendering konten dinamis untuk memberikan pengalaman pengguna yang andal dan lancar.",
       },
       editphoto: {
-        desc: "Mengembangkan sistem editing photobooth interaktif untuk Selkachi menggunakan PHP, CodeIgniter 3, AJAX, Bootstrap 4, CSS, JavaScript, Blade templating, dan RESTful API. Membangun halaman editing dinamis yang memungkinkan pengguna melakukan drag and drop foto ke dalam frame yang tersedia serta mengatur posisi, ukuran, dan tata letak foto sesuai keinginan hanya dengan sentuhan jari. Mengimplementasikan interaksi yang halus dan rendering secara real-time untuk memberikan pengalaman editing yang intuitif dan seamless. Juga menangani integrasi API, interaktivitas di sisi klien, serta optimasi performa agar responsif dan efisien di berbagai perangkat.",
+        category: "Editor Interaktif",
+        desc: "Mengembangkan sistem editing photobooth interaktif untuk Selkachi menggunakan PHP, CodeIgniter 3, AJAX, Bootstrap 4, CSS, JavaScript, Blade templating, dan RESTful API. Membangun halaman editing dinamis yang memungkinkan pengguna melakukan drag and drop foto ke dalam frame yang tersedia serta mengatur posisi, ukuran, dan tata letak foto sesuai keinginan hanya dengan sentuhan jari. Mengimplementasikan interaksi yang halus dan rendering secara real-time untuk memberikan pengalaman editing yang intuitif dan seamless. Juga menangani integrasi API, interaktivitas di sisi klien, serta optimasi performa agar responsivitas dan efisiensi meningkat.",
       },
       monitoring: {
-        desc: "Mengembangkan sistem monitoring hasil foto secara real-time menggunakan PHP, CodeIgniter 3, JavaScript, MQTT, Bootstrap 4, dan CSS. Mengimplementasikan protokol MQTT untuk memungkinkan pengiriman data secara instan, sehingga foto yang dihasilkan dapat langsung ditampilkan saat pengguna selesai melakukan sesi photobooth. Membangun antarmuka yang responsif untuk memonitor hasil foto secara efisien dengan visualisasi yang lancar dan real-time. Juga menangani integrasi sistem, pembaruan data berbasis event, serta optimasi performa untuk memberikan pengalaman monitoring live yang cepat dan andal.",
+        category: "Sistem Pemantauan",
+        desc: "Mengembangkan sistem monitoring hasil foto secara real-time menggunakan PHP, CodeIgniter 3, JavaScript, MQTT, Bootstrap 4, and CSS. Mengimplementasikan protokol MQTT untuk memungkinkan pengiriman data secara instan, sehingga foto yang dihasilkan dapat langsung ditampilkan saat pengguna selesai melakukan sesi photobooth. Membangun antarmuka yang responsif untuk memonitor hasil foto secara efisien dengan visualisasi yang lancar dan real-time. Juga menangani integrasi sistem, pembaruan data berbasis event, serta optimasi performa untuk memberikan pengalaman monitoring live yang cepat dan andal.",
       },
       findjob: {
+        category: "Slicing Frontend",
         desc: "Mengembangkan project frontend dengan melakukan slicing desain dari Figma menjadi tampilan website menggunakan Next.js, TypeScript, dan Tailwind CSS. Menerjemahkan desain menjadi komponen UI yang responsif dan reusable dengan menjaga akurasi tampilan sesuai desain (pixel-perfect). Berfokus pada pengembangan kemampuan dalam penyusunan layout, arsitektur berbasis komponen, serta implementasi desain responsif. Juga memastikan penulisan kode yang rapi serta optimasi performa untuk memberikan pengalaman pengguna yang konsisten di berbagai perangkat.",
       },
       smartticket: {
+        category: "Tiket Pintar",
         desc: "Mengembangkan sistem smart ticketing menggunakan Laravel, PHP, Bootstrap 4, MQTT, dan AJAX JavaScript. Membangun dan mengimplementasikan beberapa platform pemesanan tiket online untuk berbagai jenis acara seperti anniversary, event lari, dan konser. Mengintegrasikan payment gateway Xendit serta memanfaatkan MQTT untuk notifikasi pembayaran secara real-time, sehingga sistem dapat langsung mendeteksi dan memproses transaksi yang berhasil. Menerapkan arsitektur berbasis event untuk memastikan validasi tiket dan pembaruan status berjalan otomatis setelah pembayaran dikonfirmasi. Juga menangani integrasi API, pengolahan data dinamis, serta optimasi sistem untuk memastikan keandalan, skalabilitas, dan pengalaman pemesanan yang lancar.",
       },
       kse: {
+        category: "Platform Donasi",
         desc: "Mengembangkan sistem donasi KSE menggunakan Laravel dengan arsitektur fullstack monolith, Bootstrap 4, dan JavaScript. Membangun platform terpusat untuk mengelola proses donasi, pengolahan data, serta pelaporan dalam satu sistem yang terintegrasi. Mendesain antarmuka yang responsif dan mudah digunakan untuk mempermudah proses donasi serta meningkatkan aksesibilitas pengguna. Juga mengimplementasikan pengolahan data yang efisien, penanganan form, serta optimasi sistem untuk memastikan performa yang stabil dan andal.",
       },
     },

@@ -3,9 +3,9 @@ interface TechBadgeProps {
 }
 
 const TechBadge = ({ label }: TechBadgeProps) => (
-  <div className="text-lg bg-gray-300 rounded-xl py-1 px-6 hover:bg-gray-400 hover:text-white transition-colors duration-300 cursor-default">
+  <span className="text-[10px] sm:text-xs font-semibold tracking-wider text-slate-600 bg-slate-100 dark:bg-zinc-800 dark:text-zinc-300 px-3 py-1.5 rounded-md uppercase transition-colors duration-300 cursor-default">
     {label}
-  </div>
+  </span>
 );
 
 export default TechBadge;

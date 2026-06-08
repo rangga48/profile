@@ -37,7 +37,7 @@ const ExperienceCard = ({
           alt={role}
           width={100}
           height={100}
-          className="object-contain"
+          className="object-contain rounded-lg"
         />
         <div className="ml-0 md:ml-4 mt-4 md:mt-0 flex-grow max-w-xl">
           <h3 className="text-xl font-bold">{role}</h3>
