@@ -5,7 +5,7 @@ import HeadlineProject from "../organisms/HeadlineProject";
 import ProjectSection from "../organisms/ProjectSection";
 const ProjectLayout = ({}) => {
   return (
-    <div className="overflow-x-hidden overflow-y-clip bg-white">
+    <div className="bg-white">
       <Navbar />
       <HeadlineProject />
       <ProjectSection />

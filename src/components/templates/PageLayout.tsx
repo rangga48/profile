@@ -9,7 +9,7 @@ import ContactSection from "../organisms/ContactSection";
 
 const PageLayout = () => {
   return (
-    <div className="overflow-x-hidden overflow-y-clip bg-white">
+    <div className="bg-white">
       <Navbar />
       <HeroSection />
       <ServiceSection />

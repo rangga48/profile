@@ -8,7 +8,7 @@ import ProjectDetailGallery from "../organisms/ProjectDetailGallery";
 import { Project } from "@/config/projects";
 const DetailProjectLayout = ({ project }: { project: Project }) => {
   return (
-    <div className="overflow-x-hidden overflow-y-clip bg-white">
+    <div className="bg-white">
       <Navbar />
       <main>
         <ProjectDetailHero project={project} />
