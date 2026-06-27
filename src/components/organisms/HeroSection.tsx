@@ -1,6 +1,34 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+
+gsap.registerPlugin(ScrambleTextPlugin);
 
 const HeroSection = ({}) => {
+  const textRef = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const words = ["Rangga", "Frontend Developer", "Full Stack Developer"];
+    const tl = gsap.timeline({ repeat: -1 });
+
+    words.forEach((word) => {
+      tl.to(textRef.current, {
+        duration: 1.2,
+        scrambleText: {
+          text: word,
+          chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+          revealDelay: 0.1,
+          speed: 0.3,
+        },
+      }).to({}, { duration: 2 }); // Pause for 2 seconds after revealing
+    });
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
   return (
     <section
       id="hero"
@@ -30,19 +58,23 @@ const HeroSection = ({}) => {
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              Hi, I'm <span className="text-accent">Rangga</span>
+              Hi, I'm{" "}
+              <span ref={textRef} className="text-accent">
+                Rangga
+              </span>
             </h1>
             <p
               className="reveal d2 text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-md mb-10"
               data-aos="fade-up"
               data-aos-delay="300"
             >
-              Frontend{" "}
+              Full Stack{" "}
               <strong className="font-medium text-zinc-700 dark:text-zinc-300">
-                Developer
+                Software Engineer
               </strong>
-              . passionate about creating beautiful and functional digital
-              experiences with modern web technologies.
+              . with a frontend focus, dedicated to building beautiful,
+              functional, and high-performance web applications using modern
+              technologies.
             </p>
             <div
               className="reveal d3 flex flex-wrap gap-4"
