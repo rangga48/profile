@@ -1,17 +1,20 @@
 "use client";
 
-import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 const AOSProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: false,
-      mirror: true,
-      offset: 100,
-    });
+    const initAOS = async () => {
+      const AOS = (await import("aos")).default;
+      AOS.init({
+        duration: 800,
+        once: false,
+        mirror: true,
+        offset: 100,
+      });
+    };
+    initAOS();
   }, []);
 
   return <>{children}</>;

@@ -2,31 +2,46 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-
-gsap.registerPlugin(ScrambleTextPlugin);
 
 const HeroSection = ({}) => {
   const textRef = useRef<HTMLSpanElement>(null);
   useEffect(() => {
-    const words = ["Rangga", "Frontend Developer", "Full Stack Developer"];
-    const tl = gsap.timeline({ repeat: -1 });
+    let activeTimeline: any = null;
+    let isMounted = true;
 
-    words.forEach((word) => {
-      tl.to(textRef.current, {
-        duration: 1.2,
-        scrambleText: {
-          text: word,
-          chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-          revealDelay: 0.1,
-          speed: 0.3,
-        },
-      }).to({}, { duration: 2 }); // Pause for 2 seconds after revealing
-    });
+    const initGSAP = async () => {
+      const { default: gsap } = await import("gsap");
+      const { ScrambleTextPlugin } = await import("gsap/ScrambleTextPlugin");
+      
+      gsap.registerPlugin(ScrambleTextPlugin);
+
+      if (!isMounted) return;
+
+      const words = ["Rangga", "Frontend Developer", "Full Stack Developer"];
+      const tl = gsap.timeline({ repeat: -1 });
+
+      words.forEach((word) => {
+        tl.to(textRef.current, {
+          duration: 1.2,
+          scrambleText: {
+            text: word,
+            chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+            revealDelay: 0.1,
+            speed: 0.3,
+          },
+        }).to({}, { duration: 2 }); // Pause for 2 seconds after revealing
+      });
+
+      activeTimeline = tl;
+    };
+
+    initGSAP();
 
     return () => {
-      tl.kill();
+      isMounted = false;
+      if (activeTimeline) {
+        activeTimeline.kill();
+      }
     };
   }, []);
   return (
