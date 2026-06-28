@@ -336,10 +336,10 @@ export const projects: Project[] = [
     ],
 
     galleryImages: [
-      // {
-      //   src: "/images/projects/smart-ticketing/home.png",
-      //   alt: "AWH Smart Ticketing Home Page",
-      // },
+      {
+        src: "/img/smart1.png",
+        alt: "AWH Smart Ticketing Home Page",
+      },
     ],
   },
   {
@@ -394,10 +394,14 @@ export const projects: Project[] = [
     ],
 
     galleryImages: [
-      // {
-      //   src: "/images/projects/parking-system/home.png",
-      //   alt: "AWH Parking Management Home Page",
-      // },
+      {
+        src: "/img/parking1.png",
+        alt: "AWH Parking Management Home Page",
+      },
+      {
+        src: "/img/parking2.png",
+        alt: "AWH Parking Management Home Page",
+      },
     ],
   },
   {
@@ -452,10 +456,14 @@ export const projects: Project[] = [
     ],
 
     galleryImages: [
-      // {
-      //   src: "/images/projects/ticketing-system/home.png",
-      //   alt: "AWH Ticketing System Home Page",
-      // },
+      {
+        src: "/img/ticketing1.png",
+        alt: "AWH Ticketing System Home Page",
+      },
+      {
+        src: "/img/ticketing2.png",
+        alt: "AWH Ticketing System Home Page",
+      },
     ],
   },
 ];
